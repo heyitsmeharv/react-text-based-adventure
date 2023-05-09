@@ -1,0 +1,160 @@
+.title-container {
+  position: fixed;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.title {
+  font-size: 4rem;
+  color: #fff;
+  animation: slide-in 0.5s forwards;
+}
+
+.input {
+  background-color: #222;
+  border: none;
+  border-bottom: 2px solid #777;
+  color: #ccc;
+  padding: 10px;
+  font-size: 18px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-shadow: 1px 1px #000;
+  box-shadow: 0 0 5px #000;
+  margin: 0 20px 0 0;
+}
+
+.input:focus {
+  outline: none;
+  border-bottom-color: #fff;
+}
+
+.button {
+  background-color: #666;
+  border: none;
+  color: #ccc;
+  padding: 10px 20px;
+  font-size: 18px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-shadow: 1px 1px #000;
+  box-shadow: 0 0 5px #000;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: #444;
+  border-bottom: 2px solid #fff;
+}
+
+.button:active {
+  background-color: #222;
+  box-shadow: 0 0 0 #000;
+}
+
+.rain-container {
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  background-color: #101010;
+}
+
+@keyframes slide-in {
+  0% {
+    -webkit-transform: translate3d(0, -50%, 0);
+    transform: translate3d(0, -50%, 0);
+    opacity: 0;
+  }
+
+  100% {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+}
+
+@keyframes rain-drop {
+  0% {
+    transform: rotate(45deg) translate(0, -20px);
+    opacity: 1;
+  }
+
+  100% {
+    transform: rotate(45deg) translate(10px, 100vh);
+    opacity: 0;
+  }
+}
+
+.rain-drop {
+  position: absolute;
+  top: -20px;
+  left: calc(100% * var(--random-x));
+  width: 2px;
+  height: 20px;
+  background-color: rgba(196, 211, 223);
+  animation: rain-drop var(--duration) linear infinite;
+}
+
+/* Add multiple raindrops */
+.rain-drop:nth-of-type(1) {
+  --duration: 1s;
+  --random-x: 0.1;
+  animation-delay: 0.1s;
+}
+
+.rain-drop:nth-of-type(2) {
+  --duration: 1s;
+  --random-x: 0.2;
+  animation-delay: 0.3s;
+}
+
+.rain-drop:nth-of-type(3) {
+  --duration: 1s;
+  --random-x: 0.3;
+  animation-delay: 0.5s;
+}
+
+.rain-drop:nth-of-type(4) {
+  --duration: 1s;
+  --random-x: 0.4;
+  animation-delay: 0.5s;
+}
+
+.rain-drop:nth-of-type(5) {
+  --duration: 1s;
+  --random-x: 0.5;
+  animation-delay: 0.3s;
+}
+
+.rain-drop:nth-of-type(6) {
+  --duration: 1s;
+  --random-x: 0.6;
+  animation-delay: 0.1s;
+}
+
+.rain-drop:nth-of-type(7) {
+  --duration: 1s;
+  --random-x: 0.7;
+  animation-delay: 0.3s;
+}
+
+.rain-drop:nth-of-type(8) {
+  --duration: 1s;
+  --random-x: 0.8;
+  animation-delay: 0.2s;
+}
+
+.rain-drop:nth-of-type(9) {
+  --duration: 1s;
+  --random-x: 0.9;
+  animation-delay: 0.5s;
+}
+
+
+@media only screen and (max-width: 748px) {
+  .input {
+    margin-bottom: 40px;
+  }
+}

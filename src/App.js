@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from "react";
 
+// pages
+import Start from "./components/Start/Start";
+
 // components
 import Room from "./components/Room/Room";
 import Inventory from "./components/Inventory/Inventory";
@@ -8,6 +11,7 @@ import Inventory from "./components/Inventory/Inventory";
 import { generateRooms } from "./helpers/setup";
 
 const App = () => {
+  const [playerName, setPlayerName] = useState('');
   const [map, setMap] = useState(null);
   const [currentRoom, setCurrentRoom] = useState(null);
   const [playerStats, setPlayerStats] = useState({ health: 100, strength: 10, agility: 5, attackPower: 5 });
@@ -31,6 +35,17 @@ const App = () => {
     setCurrentRoom(gen[0]);
   }, []);
 
+  const handleStartGame = () => {
+    if (playerName === '') {
+      setPlayerName('Unknown');
+    }
+    handleNavigate();
+  }
+
+  const handlePlayerName = e => {
+    setPlayerName(e.target.value);
+  }
+
   const handleNavigate = () => {
     setCurrentRoom(map[currentRoom.id + 1]);
     whereAmI();
@@ -48,7 +63,11 @@ const App = () => {
 
   return (
     <>
-      {currentRoom &&
+      {currentRoom && currentRoom.room === 'Start' ?
+        <Start playerName={playerName} handlePlayerName={handlePlayerName} handleStartGame={handleStartGame} />
+        : null
+      }
+      {currentRoom && (currentRoom.room !== 'Start' || currentRoom.room !== 'Start') &&
         <>
           <Room
             room={map[currentRoom]}
@@ -60,6 +79,10 @@ const App = () => {
           />
           <Inventory items={playerInventory} onUse={handleUse} />
         </>
+      }
+      {currentRoom && currentRoom.room === 'End' ?
+        <h2>End</h2>
+        : null
       }
     </>
   );
