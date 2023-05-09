@@ -20,7 +20,7 @@ const Start = ({ playerName, handlePlayerName, handleStartGame }) => {
         <h1 className="title"> Text Based Adventure</h1>
         <input className="input" placeholder="Enter Your Name" value={playerName} onChange={(e) => handlePlayerName(e)} />
         <button className="button" onClick={handleStartGame}>Enter</button>
-      </div >
+      </div>
     </>
   );
 };
