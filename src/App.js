@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 
 // pages
 import Start from "./components/Start/Start";
@@ -11,6 +11,7 @@ import Inventory from "./components/Inventory/Inventory";
 import { generateRooms } from "./helpers/setup";
 
 const App = () => {
+  const inputRef = useRef();
   const [playerName, setPlayerName] = useState('');
   const [map, setMap] = useState(null);
   const [currentRoom, setCurrentRoom] = useState(null);
@@ -36,14 +37,12 @@ const App = () => {
   }, []);
 
   const handleStartGame = () => {
-    if (playerName === '') {
+    if (!inputRef.current.value) {
       setPlayerName('Unknown');
+    } else {
+      setPlayerName(inputRef.current.value)
     }
     handleNavigate();
-  }
-
-  const handlePlayerName = e => {
-    setPlayerName(e.target.value);
   }
 
   const handleNavigate = () => {
@@ -64,7 +63,7 @@ const App = () => {
   return (
     <>
       {currentRoom && currentRoom.room === 'Start' ?
-        <Start playerName={playerName} handlePlayerName={handlePlayerName} handleStartGame={handleStartGame} />
+        <Start inputRef={inputRef} handleStartGame={handleStartGame} />
         : null
       }
       {currentRoom && (currentRoom.room !== 'Start' || currentRoom.room !== 'Start') &&

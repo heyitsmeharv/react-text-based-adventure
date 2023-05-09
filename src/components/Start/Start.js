@@ -3,10 +3,8 @@ import "./styles.css";
 
 import { Text } from './Text';
 
-const Start = ({ playerName, handlePlayerName, handleStartGame }) => {
-
+const Start = ({ inputRef, handleStartGame }) => {
   const text = Text;
-
   return (
     <>
       <div className="rain-container">
@@ -26,7 +24,7 @@ const Start = ({ playerName, handlePlayerName, handleStartGame }) => {
         <div className="typewriter">
           <h1>{text[Math.floor(Math.random() * text.length)]}</h1>
         </div>
-        <input className="input" placeholder="Enter Your Name" value={playerName} onChange={(e) => handlePlayerName(e)} />
+        <input className="input" placeholder="Enter Your Name" type="text" ref={inputRef} />
         <button className="button" onClick={handleStartGame}>Enter</button>
       </div>
     </>
