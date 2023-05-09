@@ -1,12 +1,15 @@
 import React from 'react';
+import "./styles.css";
 
 const Room = ({ room, description, items, inventory, onInteract, onNavigate }) => {
+  console.log('room', room);
   return (
-    <div>
-      <p>{description}</p>
+    <div className='container'>
+      <h1>{room.name}</h1>
+      <span className="text">{description}</span>
       {items.length > 0 && (
         <div>
-          <p>Items in the room:</p>
+          <p className="text">Items in the room:</p>
           <ul>
             {items.filter(item => !inventory.includes(item)).map((item, index) => (
               <li key={index}>

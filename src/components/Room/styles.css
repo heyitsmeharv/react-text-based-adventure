@@ -1,0 +1,22 @@
+/* 
+#000000
+#14213D
+#DAA520
+#DDD4BB
+#FFF
+*/
+
+.container {
+  margin: 10%;
+  height: calc(100vh - 18%);
+}
+
+.container h1 {
+  color: #FFF;
+  font-size: 3rem;
+}
+
+.text {
+  color: #FFF;
+  font-size: 1.5rem;
+}

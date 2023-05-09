@@ -7,7 +7,7 @@ export const generateRooms = randomChance => {
   const rooms = [
     {
       id: 0,
-      room: `Start`,
+      name: `Start`,
       description: `This is the starting room`,
       items: [],
       enemies: [],
@@ -25,13 +25,13 @@ export const generateRooms = randomChance => {
     let randomRoom = listOfPotentialRooms[Math.floor(Math.random() * listOfPotentialRooms.length)];
 
     // we don't want duplicate rooms added, so let's check to see if it's already been added
-    if (!rooms.some(e => e.room === randomRoom.room)) {
+    if (!rooms.some(e => e.name === randomRoom.name)) {
       // randomRoom = Rooms[Math.floor(Math.random() * Rooms.length)];
 
       // make the room object we want to add
       const room = {
         id: i + 1,
-        room: `${randomRoom.room}`,
+        name: `${randomRoom.name}`,
         description: `${randomRoom.description}`,
         items: [],
         enemies: [],
@@ -68,7 +68,7 @@ export const generateRooms = randomChance => {
       // loop through the whole array
       for (let x = 0; x < listOfPotentialRooms.length; x++) {
         // let's try and find a room that doesn't exist in the array
-        if (!rooms.some(e => e.room === listOfPotentialRooms[x].room)) {
+        if (!rooms.some(e => e.name === listOfPotentialRooms[x].name)) {
           // we've found it!
           room = listOfPotentialRooms[x];
           // let's add an id (make sure it's not already assigned by adding it to the end of the array)
@@ -104,7 +104,7 @@ export const generateRooms = randomChance => {
   // add in the end room
   const end = {
     id: rooms[rooms.length - 1].id + 1,
-    room: `End`,
+    name: `End`,
     description: `This is the end room`,
     items: [],
     enemies: [],

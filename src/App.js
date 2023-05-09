@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
+import "./App.css";
 
 // pages
 import Start from "./components/Start/Start";
@@ -62,24 +63,29 @@ const App = () => {
 
   return (
     <>
-      {currentRoom && currentRoom.room === 'Start' ?
+      {currentRoom && currentRoom.name === 'Start' ?
         <Start inputRef={inputRef} handleStartGame={handleStartGame} />
         : null
       }
-      {currentRoom && (currentRoom.room !== 'Start' || currentRoom.room !== 'Start') &&
-        <>
-          <Room
-            room={map[currentRoom]}
-            description={map[currentRoom.id].description}
-            items={map[currentRoom.id].items}
-            inventory={playerInventory}
-            onInteract={handleInteract}
-            onNavigate={handleNavigate}
-          />
-          <Inventory items={playerInventory} onUse={handleUse} />
-        </>
+      {currentRoom && (currentRoom.name !== 'Start' || currentRoom.name !== 'Start') &&
+        <div className="main-container">
+          <div className="game">
+            <Room
+              room={map[currentRoom.id]}
+              description={map[currentRoom.id].description}
+              items={map[currentRoom.id].items}
+              inventory={playerInventory}
+              onInteract={handleInteract}
+              onNavigate={handleNavigate}
+            />
+          </div>
+          <div className="character"></div>
+          <div className="inventory">
+            <Inventory items={playerInventory} onUse={handleUse} />
+          </div>
+        </div>
       }
-      {currentRoom && currentRoom.room === 'End' ?
+      {currentRoom && currentRoom.name === 'End' ?
         <h2>End</h2>
         : null
       }
