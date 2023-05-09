@@ -1,14 +1,11 @@
 import React from "react";
 import "./styles.css";
 
+import { Text } from './Text';
+
 const Start = ({ playerName, handlePlayerName, handleStartGame }) => {
-  const text = [
-    'Hello, and welcome to this text based adventure.',
-    'Do you have what it takes?',
-    'Please lower all expectations.',
-    'Beware, Spooky Ghost!',
-    'Can you navigate all the way to the end?'
-  ];
+
+  const text = Text;
 
   return (
     <>
@@ -25,7 +22,7 @@ const Start = ({ playerName, handlePlayerName, handleStartGame }) => {
         <div className="rain-drop"></div>
       </div>
       <div className="title-container">
-        <h1 className="title"> Text Based Adventure</h1>
+        <h1 className="title">Text Based Adventure</h1>
         <div className="typewriter">
           <h1>{text[Math.floor(Math.random() * text.length)]}</h1>
         </div>
