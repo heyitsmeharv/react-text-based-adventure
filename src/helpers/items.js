@@ -1,3 +1,8 @@
+// images
+import Boots from "../resources/images/Boots";
+import Breastplate from "../resources/images/breastplate.png";
+import BroadSword from "../resources/images/broadsword.png";
+
 export const Items = [
   {
     name: `Sword`,

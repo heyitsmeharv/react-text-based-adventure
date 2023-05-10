@@ -17,8 +17,8 @@ const Character = ({ playerName, playerStats, equippedItems }) => {
   return (
     <div className='character-container'>
       <div className='character-flex-container'>
-        <h2 className="character-hero-stats">Stats</h2>
-        <h2 className="character-hero-name">Adventurer: {playerName}</h2>
+        <h2 className="character-hero-name">{playerName}</h2>
+        {/* <h2 className="character-hero-name">{playerName}</h2> */}
       </div>
       <div className='character-icon-wrapper'>
         <div className='character-stat-row'>
