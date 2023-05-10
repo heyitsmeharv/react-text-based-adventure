@@ -1,0 +1,11 @@
+.character-container {
+  margin: 24px;
+}
+
+.character-hero-name {
+  font-size: 2rem;
+  text-align: right;
+  font-weight: bold;
+  font-style: italic;
+  color: #000000;
+}

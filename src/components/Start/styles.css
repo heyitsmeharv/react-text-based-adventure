@@ -1,18 +1,18 @@
 .title-container {
-  position: fixed;
+  position: absolute;
   top: 40%;
-  left: 50%;
+  left: 50%; 
   transform: translate(-50%, -50%);
   text-align: center;
   animation: slide-in 0.5s forwards;
 }
 
-.title {
+.start-title {
   font-size: 4rem;
   color: #fff;
 }
 
-.input {
+.start-input {
   background-color: #222;
   border: none;
   border-bottom: 2px solid #777;
@@ -26,12 +26,12 @@
   margin: 0 20px 0 0;
 }
 
-.input:focus {
+.start-input:focus {
   outline: none;
   border-bottom-color: #fff;
 }
 
-.button {
+.start-button {
   background-color: #666;
   border: none;
   color: #ccc;
@@ -44,12 +44,12 @@
   cursor: pointer;
 }
 
-.button:hover {
+.start-button:hover {
   background-color: #444;
   border-bottom: 2px solid #fff;
 }
 
-.button:active {
+.start-button:active {
   background-color: #222;
   box-shadow: 0 0 0 #000;
 }
@@ -203,11 +203,11 @@
 
 @media only screen and (max-width: 748px) {
 
-  .title {
+  .start-title {
     font-size: 2.5rem;
   }
 
-  .input {
+  .start-input {
     margin-bottom: 40px;
   }
 

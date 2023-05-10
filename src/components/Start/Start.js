@@ -20,12 +20,12 @@ const Start = ({ inputRef, handleStartGame }) => {
         <div className="rain-drop"></div>
       </div>
       <div className="title-container">
-        <h1 className="title">Text Based Adventure</h1>
+        <h1 className="start-title">Text Based Adventure</h1>
         <div className="typewriter">
           <h1>{text[Math.floor(Math.random() * text.length)]}</h1>
         </div>
-        <input className="input" placeholder="Enter Your Name" type="text" ref={inputRef} />
-        <button className="button" onClick={handleStartGame}>Enter</button>
+        <input className="start-input" placeholder="Enter Your Name" type="text" ref={inputRef} />
+        <button className="start-button" onClick={handleStartGame}>Enter</button>
       </div>
     </>
   );

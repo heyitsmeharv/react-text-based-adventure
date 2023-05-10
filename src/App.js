@@ -7,6 +7,7 @@ import Start from "./components/Start/Start";
 // components
 import Room from "./components/Room/Room";
 import Inventory from "./components/Inventory/Inventory";
+import Character from "./components/Character/Character";
 
 // helpers
 import { generateRooms } from "./helpers/setup";
@@ -79,7 +80,9 @@ const App = () => {
               onNavigate={handleNavigate}
             />
           </div>
-          <div className="character"></div>
+          <div className="character">
+            <Character playerName={playerName} playerStats={playerStats} equippedItems={equippedItems} />
+          </div>
           <div className="inventory">
             <Inventory items={playerInventory} onUse={handleUse} />
           </div>
