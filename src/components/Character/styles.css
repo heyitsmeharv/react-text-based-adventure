@@ -30,7 +30,7 @@
 .character-stat-text {
   font-size: 2rem;
   font-weight: 400;
-  color: #000000;
+  color: #FFF;
   margin: 0 10px;
 }
 
@@ -38,13 +38,13 @@
   font-size: 2rem;
   font-weight: bold;
   font-style: italic;
-  color: #000000;
+  color: #FFF;
 }
 
 .character-hero-stats {
   font-size: 2rem;
   font-weight: bold;
-  color: #000000;
+  color: #FFF;
 }
 
 .character-title {
@@ -73,6 +73,7 @@
 }
 
 .character-heading-text {
+  color: #DDD4BB;
   margin-left: 30px;
 }
 
@@ -152,8 +153,62 @@
   color: #FFF;
 }
 
-@media only screen and (max-width: 1000px) {
+.shoulder.flash {
+  animation: flash 0.5s;
+}
 
+.helmet.flash {
+  animation: flash 0.5s;
+}
+
+.cape.flash {
+  animation: flash 0.5s;
+}
+
+.helmet.flash {
+  animation: flash 0.5s;
+}
+
+.weapon.flash {
+  animation: flash 0.5s;
+}
+
+.chest.flash {
+  animation: flash 0.5s;
+}
+
+
+.gloves.flash {
+  animation: flash 0.5s;
+}
+
+.boots.flash {
+  animation: flash 0.5s;
+}
+
+.legs.flash {
+  animation: flash 0.5s;
+}
+
+.ring.flash {
+  animation: flash 0.5s;
+}
+
+@keyframes flash {
+  0% {
+    background-color: #fff;
+  }
+
+  50% {
+    background-color: red;
+  }
+
+  100% {
+    background-color: #fff;
+  }
+}
+
+@media only screen and (max-width: 1000px) {
   .character-flex-icon-container {
     display: flex;
     flex-direction: column;

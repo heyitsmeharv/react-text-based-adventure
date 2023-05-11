@@ -4,7 +4,7 @@ import "./styles.css";
 // images
 import Bag from "../../resources/images/light-backpack.png";
 
-const Inventory = ({ items, onUse }) => {
+const Inventory = ({ items, equippedItems, onUse }) => {
   return (
     <div className='inventory-container'>
       <div className='inventory-wrapper-text'>
@@ -12,21 +12,18 @@ const Inventory = ({ items, onUse }) => {
         <h2 className="inventory-heading-text">Inventory</h2>
       </div>
       {items.length > 0 ? (
-        <ul>
+        <ul className='inventory-list'>
           {items.map((item, index) => (
-            <li key={index}>
-              {item.name} ({item.description})
-              {/* {item.usable && (
-                <button onClick={() => onUse(item)}>Use</button>
-              )} */}
-              <button onClick={() => onUse(item)}>Use</button>
+            <li key={index} className='inventory-list-item' >
+              <img className='inventory-item-image' alt={item.name} src={item.image} />
+              <span className="inventory-item-text">{item.name}</span>
+              <button className="inventory-button" onClick={() => onUse(item)}>{(item.slot === 'consumable') ? ('Consumable') : ((item.slot === 'usable') ? ('Use') : ('Equip'))}</button>
             </li>
           ))}
         </ul>
       ) : (
-        <p>Your inventory is empty.</p>
-      )
-      }
+        <p className='inventory-text'>Your inventory is empty.</p>
+      )}
     </div >
   );
 };

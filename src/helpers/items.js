@@ -12,6 +12,7 @@ import Fedora from "../resources/images/fedora.png";
 import FireAxe from "../resources/images/fire-axe.png";
 import FlowerHat from "../resources/images/flower-hat.png";
 import Gloves from "../resources/images/gloves.png";
+import HealthPotion from "../resources/images/health-potion.png";
 import Key from "../resources/images/skeleton-key.png";
 import LegArmour from "../resources/images/leg-armor.png";
 import LockPick from "../resources/images/lockpicks.png";
@@ -25,147 +26,173 @@ export const Items = [
     name: `Sword`,
     image: BroadSword,
     slot: 'weapon',
-    description: `Ol'pokey`,
-    upgradeStr: 2,
+    description: `Increased your strength by +2`,
+    statUpgrade: { strength: 2, agility: 0 },
+    taken: false
   },
   {
     name: `Boots`,
     image: Boots,
     slot: 'boots',
-    description: ``,
-    upgradeStr: 2,
+    description: `Increased your agility by +2`,
+    statUpgrade: { strength: 0, agility: 2 },
+    taken: false
   },
   {
     name: `Breastplate`,
     image: Breastplate,
     slot: 'chest',
-    description: ``,
-    upgradeStr: 2,
+    description: `Increased your strength by +4`,
+    statUpgrade: { strength: 0, agility: 4 },
+    taken: false
   },
   {
     name: `Cape`,
     image: Cape,
     slot: 'cape',
-    description: ``,
-    upgradeAgi: 2,
+    description: `Increased your agility by +2`,
+    statUpgrade: { strength: 0, agility: 2 },
+    taken: false
   },
   {
     name: `Cape Armour`,
     image: CapeArmour,
     slot: 'cape',
-    description: ``,
-    upgradeAgi: 2,
+    description: `Increased your agility by +5`,
+    statUpgrade: { strength: 0, agility: 5 },
+    taken: false
   },
   {
-    name: `ChestArmour`,
+    name: `Chest Armour`,
     image: ChestArmour,
     slot: 'chest',
-    description: ``,
-    upgradeAgi: 2,
+    description: `Increased your strength by +2`,
+    statUpgrade: { strength: 2, agility: 0 },
+    taken: false
   },
   {
     name: `Cowboy Boots`,
     image: CowboyBoots,
     slot: 'boots',
-    description: ``,
-    upgradeAgi: 2,
+    description: `Increased your agility by +1`,
+    statUpgrade: { strength: 0, agility: 1 },
+    taken: false
   },
   {
     name: `Dorsal Scale Shoulders`,
     image: DorsalScale,
     slot: 'shoulders',
-    description: ``,
-    upgradeAgi: 2,
+    description: `Increased your strength by +5`,
+    statUpgrade: { strength: 5, agility: 0 },
+    taken: false
   },
   {
     name: `Dwarf Helmet`,
     image: DwarfHelmet,
     slot: 'helmet',
-    description: ``,
-    upgradeAgi: 2,
+    description: `Increased your strength by +3`,
+    statUpgrade: { strength: 3, agility: 0 },
+    taken: false
   },
   {
     name: `Fedora`,
     image: Fedora,
     slot: 'helmet',
-    description: ``,
-    upgradeAgi: 2,
+    description: `Increased your strength by +1`,
+    statUpgrade: { strength: 1, agility: 0 },
+    taken: false
   },
   {
     name: `Fire Axe`,
     image: FireAxe,
-    description: ``,
+    description: `Increased your strength by +2`,
     slot: 'weapon',
-    upgradeAgi: 2,
+    statUpgrade: { strength: 2, agility: 0 },
+    taken: false
   },
   {
     name: `Flower Hat`,
     image: FlowerHat,
-    description: ``,
+    description: `Increased your strength by +1`,
     slot: 'helmet',
-    upgradeAgi: 2,
+    statUpgrade: { strength: 1, agility: 0 },
+    taken: false
   },
   {
     name: `Gloves`,
     image: Gloves,
     slot: 'gloves',
-    description: ``,
-    upgradeAgi: 2,
+    description: `Increased your agility by +1`,
+    statUpgrade: { strength: 0, agility: 1 },
+    taken: false
   },
   {
     name: `Health Potion`,
-    image: BroadSword,
-    description: ``,
+    image: HealthPotion,
+    description: `Consume for 25hp`,
     slot: 'consumable',
     heal: 25,
+    taken: false
   },
   {
     name: `Key`,
     image: Key,
-    slot: 'consumable',
-    description: ``,
+    slot: 'usable',
+    description: `Will unlock a locked door`,
     unlockDoor: true,
+    taken: false
   },
   {
     name: `Leg Armour`,
     image: LegArmour,
     slot: 'legs',
-    description: ``,
+    statUpgrade: { strength: 3, agility: 0 },
+    description: `Increased your strength by +3`,
     unlockDoor: true,
+    taken: false
   },
   {
     name: `LockPick`,
     image: LockPick,
-    slot: 'consumable',
-    description: ``,
+    slot: 'usable',
+    description: `Can have a chance of unlocking a door`,
     unlockDoor: true,
+    taken: false
   },
   {
     name: `Mailed Fist`,
     image: MailedFist,
     slot: 'gloves',
-    description: ``,
+    statUpgrade: { strength: 3, agility: 0 },
+    description: `Increased your strength by +3`,
     unlockDoor: true,
+    taken: false
   },
   {
     name: `Spiked Shoulder Armour`,
     image: SpikedShoulderArmour,
     slot: 'shoulders',
-    description: ``,
+    statUpgrade: { strength: 5, agility: 0 },
+    description: `Increased your strength by +5`,
     unlockDoor: true,
+    taken: false
   },
   {
     name: `Trench Spade`,
     image: TrenchSpade,
     slot: 'weapon',
-    description: ``,
+    statUpgrade: { strength: 2, agility: 0 },
+    description: `Increased your strength by +2`,
     unlockDoor: true,
+    taken: false
   },
   {
     name: `Warlord Helmet`,
     image: WarlordHelmet,
     slot: 'helmet',
-    description: ``,
+    statUpgrade: { strength: 5, agility: 0 },
+    description: `Increased your strength by +5`,
     unlockDoor: true,
+    taken: false
   },
 ];

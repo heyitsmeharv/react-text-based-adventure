@@ -25,10 +25,11 @@
 
 .character {
   grid-area: Character;
-  background-color: #DDD4BB;
+  background-color: #00111C;
 }
 
 .inventory {
   grid-area: Inventory;
-  background-color: #DDD4BB;
+  background-color: #00111C;
+  overflow-y: auto;
 }

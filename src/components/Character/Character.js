@@ -13,13 +13,11 @@ import AP from "../../resources/images/sword-brandish.png";
 import Empty from "../../resources/images/square.png";
 import Equipment from "../../resources/images/battle-gear.png";
 
-const Character = ({ playerName, playerStats, equippedItems }) => {
-
-  console.log('equippedItems', equippedItems);
-
-  const { health, strength, agility, attackPower } = playerStats;
+const Character = ({ playerName, playerStats, equippedItems, flash }) => {
+  const [{ health, strength, agility, attackPower }] = playerStats;
   const [{ helmet, cape, shoulders, weapon, chest, gloves, boots, legs, ring }] = equippedItems;
 
+  console.log('flash', flash);
 
   return (
     <div className='character-container'>
@@ -51,36 +49,36 @@ const Character = ({ playerName, playerStats, equippedItems }) => {
           <h2 className="character-heading-text">Equipped Items</h2>
         </div>
         <div className='character-equipment'>
-          <div className='shoulder'>
+          <div className={`shoulder ${flash.slot === 'shoulders' && flash.value ? 'flash' : ''}`} >
             <img alt='shoulder' className='character-stat-icon' src={shoulders ? shoulders : Empty} />
           </div>
-          <div className='helmet'>
+          <div className={`helmet ${flash.slot === 'helmet' && flash.value ? 'flash' : ''}`} >
             <img alt='helmet' className='character-stat-icon' src={helmet ? helmet : Empty} />
           </div>
-          <div className='cape'>
+          <div className={`cape ${flash.slot === 'cape' && flash.value ? 'flash' : ''}`} >
             <img alt='cape' className='character-stat-icon' src={cape ? cape : Empty} />
           </div>
-          <div className='weapon'>
+          <div className={`weapon ${flash.slot === 'weapon' && flash.value ? 'flash' : ''}`} >
             <img alt='weapon' className='character-stat-icon' src={weapon ? weapon : Empty} />
           </div>
-          <div className='chest'>
+          <div className={`chest ${flash.slot === 'chest' && flash.value ? 'flash' : ''}`} >
             <img alt='chest' className='character-stat-icon' src={chest ? chest : Empty} />
           </div>
-          <div className='gloves'>
+          <div className={`gloves ${flash.slot === 'gloves' && flash.value ? 'flash' : ''}`} >
             <img alt='gloves' className='character-stat-icon' src={gloves ? gloves : Empty} />
           </div>
-          <div className='boots'>
+          <div className={`boots ${flash.slot === 'boots' && flash.value ? 'flash' : ''}`} >
             <img alt='boots' className='character-stat-icon' src={boots ? boots : Empty} />
           </div>
-          <div className='legs'>
+          <div className={`legs ${flash.slot === 'legs' && flash.value ? 'flash' : ''}`} >
             <img alt='legs' className='character-stat-icon' src={legs ? legs : Empty} />
           </div>
-          <div className='ring'>
+          <div className={`ring ${flash.slot === 'ring' && flash.value ? 'flash' : ''}`} >
             <img alt='ring' className='character-stat-icon' src={ring ? ring : Empty} />
           </div>
         </div>
       </div>
-    </div>
+    </div >
   );
 };
 

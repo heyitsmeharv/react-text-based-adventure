@@ -1,5 +1,5 @@
 .inventory-container {
-  margin: 24px 12px;
+  margin: 12px 24px;
 }
 
 .inventory-wrapper-text {
@@ -7,11 +7,56 @@
   align-items: center;
 }
 
+.inventory-text {
+  color: #FFF;
+  font-size: 1.5rem;
+} 
+
 .inventory-icon {
   width: 65px;
   height: 65px;
 }
 
 .inventory-heading-text {
+  color: #DDD4BB; 
   margin-left: 30px;
+}
+
+.inventory-list {
+  list-style-type: none;
+  padding: 0px;
+}
+
+.inventory-list-item {
+  display: flex;
+  align-items: center;
+  margin: 10px 0;
+}
+
+.inventory-item-image {
+  width: 60px;
+  height: 60px;
+}
+
+.inventory-item-text {
+  color: #FFF;
+  font-size: 1.5rem;
+  margin-left: 30px;
+}
+
+.inventory-button {
+  background-color: #DDD4BB;
+  border: none;
+  color: #000;
+  padding: 10px 20px;
+  font-size: 18px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  cursor: pointer;
+  margin-left: auto;
+}
+
+.inventory-button:hover {
+  background-color: #F3E9CE;
+  border-bottom: 2px solid #000;
 }
