@@ -16,10 +16,6 @@
   background-color: #101010;
 }
 
-.character-container {}
-
-.inventory-container {}
-
 .panel {
   width: 0;
   height: 100vh;
@@ -30,6 +26,7 @@
 
 .panel.active {
   width: 30%;
+  overflow-y: auto;
 }
 
 .toggle-button {

@@ -7,8 +7,10 @@ const Room = ({ room, description, items, inventory, onInteract, onNavigate }) =
   return (
     <div className='room-container'>
       <div className='room-scenario'>
-        <h1>{room.name}</h1>
-        <span className="room-text">{description}</span>
+        <div className='room-description'>
+          <h1 className="room-text-header">{room.name}</h1>
+          <span className="room-text">{description}</span>
+        </div>
         <div className='room-items'>
           <h1 className="room-text-header">Items in the room:</h1>
           {items.length > 0 ? (

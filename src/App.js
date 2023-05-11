@@ -148,12 +148,8 @@ const App = () => {
             <button className="toggle-button" onClick={togglePanel}>
               <img alt='player' className='character-stat-icon' src={Person} />
             </button>
-            <div className="character-container">
-              <Character playerName={playerName} playerStats={playerStats} equippedItems={equippedItems} flash={flash} />
-            </div>
-            <div className="inventory-container">
-              <Inventory items={playerInventory} equippedItems={equippedItems} onUse={handleUse} />
-            </div>
+            <Character playerName={playerName} playerStats={playerStats} equippedItems={equippedItems} flash={flash} />
+            <Inventory items={playerInventory} equippedItems={equippedItems} onUse={handleUse} />
           </div>
         </div>
       }
