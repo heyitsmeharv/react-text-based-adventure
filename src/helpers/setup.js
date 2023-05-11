@@ -39,7 +39,7 @@ export const generateRooms = randomChance => {
       };
 
       // Add random items to the room.
-      const randomItem = Math.floor(Math.random() * 3);
+      const randomItem = Math.floor(Math.random() * 21);
       const itemSpawnChance = randomChance(0.5);
       for (let x = 0; x < items.length; x++) {
         if (itemSpawnChance) {
@@ -74,7 +74,7 @@ export const generateRooms = randomChance => {
           // let's add an id (make sure it's not already assigned by adding it to the end of the array)
           room.id = rooms[rooms.length - 1].id + 1;
           // select a random item
-          const randomItem = Math.floor(Math.random() * 3);
+          const randomItem = Math.floor(Math.random() * 21);
           // add random items to the room (implement a spawn chance).
           const itemSpawnChance = randomChance(0.5);
           for (let x = 0; x < items.length; x++) {

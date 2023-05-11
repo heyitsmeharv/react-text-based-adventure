@@ -1,0 +1,17 @@
+.inventory-container {
+  margin: 24px 12px;
+}
+
+.inventory-wrapper-text {
+  display: flex;
+  align-items: center;
+}
+
+.inventory-icon {
+  width: 65px;
+  height: 65px;
+}
+
+.inventory-heading-text {
+  margin-left: 30px;
+}

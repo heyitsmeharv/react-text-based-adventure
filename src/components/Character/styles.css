@@ -49,28 +49,106 @@
 
 .character-title {
   font-size: 1.5rem;
-
 }
 
 .character-sub-title {
   font-size: 1rem;
 }
 
-.health-bar {
+.character-equipment-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.character-equipment-wrapper-text-bottom {
+  display: flex;
+  align-items: center;
+  margin-top: 5%;
+}
+
+.character-equipment-wrapper-text-top {
+  display: flex;
+  align-items: center;
+  margin-bottom: 2%;
+}
+
+.character-heading-text {
+  margin-left: 30px;
+}
+
+.character-equipment {
+  display: grid;
+  margin: 5% 0;
+  grid-template-columns: repeat(3, 0.1fr);
+  grid-template-rows: repeat(3, 1fr);
+  grid-column-gap: 10px;
+  grid-row-gap: 10px;
+  place-content: center;
+  grid-template-areas:
+    "Shoulder Helmet Cape"
+    "Weapon Chest Gloves"
+    "Boots Legs Ring";
+}
+
+.shoulder {
+  grid-area: Shoulder;
+  width: fit-content;
+}
+
+.helmet {
+  grid-area: Helmet;
+  width: fit-content;
+}
+
+.cape {
+  grid-area: Cape;
+  width: fit-content;
+}
+
+.weapon {
+  grid-area: Weapon;
+  width: fit-content;
+}
+
+.chest {
+  grid-area: Chest;
+  width: fit-content;
+}
+
+.gloves {
+  grid-area: Gloves;
+  width: fit-content;
+}
+
+.boots {
+  grid-area: Boots;
+  width: fit-content;
+}
+
+.legs {
+  grid-area: Legs;
+  width: fit-content;
+}
+
+.ring {
+  grid-area: Ring;
+  width: fit-content;
+}
+
+
+.stat-bar {
   width: 80%;
-  height: 30px;
-  border-radius: 13px;
+  height: 35px;
+  border-radius: 30px;
   background-color: #FFF;
   overflow: hidden;
   margin-left: 30px;
 }
 
-.health-bar-fill {
+.stat-bar-fill {
   height: 100%;
-  border-radius: 13px;
   transition: width 0.5s ease-in-out;
   text-align: center;
-  padding: 5px 0;
   color: #FFF;
 }
 

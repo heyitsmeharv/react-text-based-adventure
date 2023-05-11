@@ -12,10 +12,11 @@ const Room = ({ room, description, items, inventory, onInteract, onNavigate }) =
           {items.length > 0 && (
             <div>
               <h1 className="room-text-header">Items in the room:</h1>
-              <ul>
+              <ul className='room-item-list'>
                 {items.filter(item => !inventory.includes(item)).map((item, index) => (
-                  <li key={index}>
-                    <span className="room-text">{item.name} - ({item.description})</span>
+                  <li key={index} className='room-list-item'>
+                    <img className='room-item-image' alt={item.name} src={item.image} />
+                    <span className="room-item-text">{item.name} - {item.description}</span>
                     <button className="room-button-item" onClick={() => onInteract(item)}>Pick up</button>
                   </li>
                 ))}

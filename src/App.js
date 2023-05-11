@@ -19,7 +19,7 @@ const App = () => {
   const [currentRoom, setCurrentRoom] = useState(null);
   const [playerStats, setPlayerStats] = useState({ health: 100, strength: 10, agility: 5, attackPower: 5 });
   const [playerInventory, setPlayerInventory] = useState([]);
-  const [equippedItems, setEquippedItems] = useState([]);
+  const [equippedItems, setEquippedItems] = useState([{ helmet: null, cape: null, shoulders: null, weapon: null, chest: null, gloves: null, boots: null, legs: null, ring: null }]);
 
   // used for debugging.
   const whereAmI = () => {
@@ -60,6 +60,14 @@ const App = () => {
   // used for when the player interacts with the item.
   const handleUse = item => {
     console.log('used item', item);
+    // sake of testing let's just add a weapon regardless;
+
+    const equippedItemsCopy = equippedItems;
+
+    equippedItems[0].weapon = item.image;
+
+    setEquippedItems(...equippedItems, equippedItemsCopy);
+    console.log('equippedItems', equippedItems);
   };
 
   return (

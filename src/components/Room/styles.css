@@ -75,7 +75,7 @@
   text-shadow: 1px 1px #000;
   box-shadow: 0 0 5px #000;
   cursor: pointer;
-  float: right;
+  margin-left: auto;
 }
 
 .room-button-item:hover {
@@ -92,8 +92,29 @@
   height: 90%;
 }
 
+.room-item-list {
+  list-style-type: none;
+  padding: 0px;
+}
+
+.room-list-item {
+  display: flex;
+  align-items: center;
+}
+
 .room-items {
   margin: 10% 0px;
+}
+
+.room-item-image {
+  width: 60px;
+  height: 60px;
+}
+
+.room-item-text {
+  margin-left: 10px;
+  color: #FFF;
+  font-size: 1.5rem;
 }
 
 .room-options {
