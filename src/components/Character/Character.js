@@ -18,7 +18,7 @@ const Character = ({ playerName, playerStats, equippedItems }) => {
   console.log('equippedItems', equippedItems);
 
   const { health, strength, agility, attackPower } = playerStats;
-  const { helmet, cape, shoulders, weapon, chest, gloves, boots, legs, ring } = equippedItems;
+  const [{ helmet, cape, shoulders, weapon, chest, gloves, boots, legs, ring }] = equippedItems;
 
 
   return (

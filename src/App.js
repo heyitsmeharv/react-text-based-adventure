@@ -40,7 +40,7 @@ const App = () => {
 
   const handleStartGame = () => {
     if (!inputRef.current.value) {
-      setPlayerName('Unknown');
+      setPlayerName('Mystery Person');
     } else {
       setPlayerName(inputRef.current.value)
     }
@@ -60,14 +60,41 @@ const App = () => {
   // used for when the player interacts with the item.
   const handleUse = item => {
     console.log('used item', item);
-    // sake of testing let's just add a weapon regardless;
 
     const equippedItemsCopy = equippedItems;
 
-    equippedItems[0].weapon = item.image;
+    switch (item.slot) {
+      case 'helmet':
+        equippedItemsCopy[0].helmet = item.image;
+        break;
+      case 'cape':
+        equippedItemsCopy[0].cape = item.image;
+        break;
+      case 'shoulders':
+        equippedItemsCopy[0].shoulders = item.image;
+        break;
+      case 'weapon':
+        equippedItemsCopy[0].weapon = item.image;
+        break;
+      case 'chest':
+        equippedItemsCopy[0].chest = item.image;
+        break;
+      case 'gloves':
+        equippedItemsCopy[0].gloves = item.image;
+        break;
+      case 'boots':
+        equippedItemsCopy[0].boots = item.image;
+        break;
+      case 'legs':
+        equippedItemsCopy[0].legs = item.image;
+        break;
+      case 'ring':
+        equippedItemsCopy[0].ring = item.image;
+        break;
+      default: ;
+    }
 
-    setEquippedItems(...equippedItems, equippedItemsCopy);
-    console.log('equippedItems', equippedItems);
+    setEquippedItems([...equippedItems], equippedItemsCopy);
   };
 
   return (
