@@ -7,29 +7,52 @@
 */
 
 .main-container {
-  width: 100%;
-  height: 100vh;
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  grid-template-rows: 1fr 1fr;
-  gap: 0 2px;
-  grid-template-areas:
-    "Game Character"
-    "Game Inventory";
+  display: flex;
 }
 
-.game {
-  grid-area: Game;
+.game-container {
+  width: 100%;
+  height: 100vh;
   background-color: #101010;
 }
 
-.character {
-  grid-area: Character;
+.character-container {}
+
+.inventory-container {}
+
+.panel {
+  width: 0;
+  height: 100vh;
+  transition: width 0.5s ease-in-out;
   background-color: #00111C;
+  overflow: hidden;
 }
 
-.inventory {
-  grid-area: Inventory;
-  background-color: #00111C;
-  overflow-y: auto;
+.panel.active {
+  width: 30%;
+}
+
+.toggle-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 1;
+  outline: none;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 700px) {
+  .panel.active {
+    position: absolute;
+    right: 0;
+    width: 100%;
+  }
+}
+
+@media only screen and (min-width: 700px) and (max-width: 1200px) {
+  .panel.active {
+    width: 50%;
+  }
 }

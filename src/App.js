@@ -9,11 +9,15 @@ import Room from "./components/Room/Room";
 import Inventory from "./components/Inventory/Inventory";
 import Character from "./components/Character/Character";
 
+// images
+import Person from "./resources/images/person.png";
+
 // helpers
 import { generateRooms } from "./helpers/setup";
 
 const App = () => {
   const inputRef = useRef();
+  const [panelActive, setPanelActive] = useState(false);
   const [playerName, setPlayerName] = useState('');
   const [map, setMap] = useState(null);
   const [currentRoom, setCurrentRoom] = useState(null);
@@ -54,7 +58,7 @@ const App = () => {
   }
 
   // used to proceed through the next room.
-  const handleInteract = item => {   
+  const handleInteract = item => {
     map[currentRoom.id].items.taken = true;
     setPlayerInventory([...playerInventory, item]);
   };
@@ -118,6 +122,10 @@ const App = () => {
     }
   };
 
+  const togglePanel = () => {
+    setPanelActive(!panelActive);
+  };
+
   return (
     <>
       {currentRoom && currentRoom.name === 'Start' ?
@@ -126,7 +134,7 @@ const App = () => {
       }
       {currentRoom && (currentRoom.name !== 'Start' || currentRoom.name !== 'Start') &&
         <div className="main-container">
-          <div className="game">
+          <div className="game-container">
             <Room
               room={map[currentRoom.id]}
               description={map[currentRoom.id].description}
@@ -136,11 +144,16 @@ const App = () => {
               onNavigate={handleNavigate}
             />
           </div>
-          <div className="character">
-            <Character playerName={playerName} playerStats={playerStats} equippedItems={equippedItems} flash={flash} />
-          </div>
-          <div className="inventory">
-            <Inventory items={playerInventory} equippedItems={equippedItems} onUse={handleUse} />
+          <div className={`panel ${panelActive ? 'active' : ''}`}>
+            <button className="toggle-button" onClick={togglePanel}>
+              <img alt='player' className='character-stat-icon' src={Person} />
+            </button>
+            <div className="character-container">
+              <Character playerName={playerName} playerStats={playerStats} equippedItems={equippedItems} flash={flash} />
+            </div>
+            <div className="inventory-container">
+              <Inventory items={playerInventory} equippedItems={equippedItems} onUse={handleUse} />
+            </div>
           </div>
         </div>
       }

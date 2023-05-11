@@ -79,12 +79,11 @@
 
 .character-equipment {
   display: grid;
-  margin: 5% 0;
+  margin: auto;
   grid-template-columns: repeat(3, 0.1fr);
   grid-template-rows: repeat(3, 1fr);
   grid-column-gap: 10px;
   grid-row-gap: 10px;
-  place-content: center;
   grid-template-areas:
     "Shoulder Helmet Cape"
     "Weapon Chest Gloves"
@@ -135,7 +134,6 @@
   grid-area: Ring;
   width: fit-content;
 }
-
 
 .stat-bar {
   width: 80%;
