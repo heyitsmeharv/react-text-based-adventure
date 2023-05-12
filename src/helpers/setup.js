@@ -39,23 +39,31 @@ export const generateRooms = randomChance => {
       };
 
       // Add random items to the room.
-      const randomItem = Math.floor(Math.random() * 21);
+      const randomItem = items[Math.floor(Math.random() * 21)];
       const itemSpawnChance = randomChance(0.5);
+
+      // check to see if the item has already been added to the game
+      // unless it's a consumable or usable
       for (let x = 0; x < items.length; x++) {
-        if (itemSpawnChance) {
-          if (!room.items.includes(items[randomItem])) {
-            room.items.push(items[randomItem]);
+        const itemAlreadyExists = rooms.some(r => {
+          return r[x]?.items.includes(randomItem);
+        });
+        if (!itemAlreadyExists) {
+          if (itemSpawnChance) {
+            if (!room.items.includes(randomItem)) {
+              room.items.push(randomItem);
+            }
           }
         }
       }
 
       // Add enemies to the room
-      const randomEnemy = Math.floor(Math.random() * 3);
+      const randomEnemy = enemies[Math.floor(Math.random() * 3)];
       const enemiesSpawnChance = randomChance(0.2);
       for (let x = 0; x < enemies.length; x++) {
         if (enemiesSpawnChance) {
-          if (!room.enemies.includes(enemies[randomEnemy])) {
-            room.enemies.push(enemies[randomEnemy]);
+          if (!room.enemies.includes(randomEnemy)) {
+            room.enemies.push(randomEnemy);
           }
         }
       }
@@ -74,24 +82,24 @@ export const generateRooms = randomChance => {
           // let's add an id (make sure it's not already assigned by adding it to the end of the array)
           room.id = rooms[rooms.length - 1].id + 1;
           // select a random item
-          const randomItem = Math.floor(Math.random() * 21);
+          const randomItem = items[Math.floor(Math.random() * 21)];
           // add random items to the room (implement a spawn chance).
           const itemSpawnChance = randomChance(0.5);
           for (let x = 0; x < items.length; x++) {
             if (itemSpawnChance) {
               // we don't want to place duplicate items into the room
-              if (!room.items.includes(items[randomItem])) {
-                room.items.push(items[randomItem]);
+              if (!room.items.includes(randomItem)) {
+                room.items.push(randomItem);
               }
             }
           }
           // Add enemies to the room
-          const randomEnemy = Math.floor(Math.random() * 3);
+          const randomEnemy = enemies[Math.floor(Math.random() * 3)];
           const enemiesSpawnChance = randomChance(0.2);
           for (let x = 0; x < enemies.length; x++) {
             if (enemiesSpawnChance) {
-              if (!room.enemies.includes(enemies[randomEnemy])) {
-                room.enemies.push(enemies[randomEnemy]);
+              if (!room.enemies.includes(randomEnemy)) {
+                room.enemies.push(randomEnemy);
               }
             }
           }

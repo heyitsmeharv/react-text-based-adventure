@@ -65,57 +65,86 @@ const App = () => {
 
   // used for when the player interacts with the item.
   const handleUse = item => {
-    // TODO: MAKE SURE STATS DECREASE WHEN SWAPPING ITEMS
     console.log('used item', item);
     // check if item isn't already equipped
     const isEquipped = equippedItems.some(i => i[item.slot] === item.image);
 
     if (!isEquipped) {
+      let swappedOutItem;
       const equippedItemsCopy = equippedItems;
       switch (item.slot) {
         case 'helmet':
+          swappedOutItem = equippedItemsCopy[0].helmet;
           equippedItemsCopy[0].helmet = item.image;
           break;
         case 'cape':
+          swappedOutItem = equippedItemsCopy[0].cape;
           equippedItemsCopy[0].cape = item.image;
           break;
         case 'shoulders':
+          swappedOutItem = equippedItemsCopy[0].shoulders;
           equippedItemsCopy[0].shoulders = item.image;
           break;
         case 'weapon':
+          swappedOutItem = equippedItemsCopy[0].weapon;
           equippedItemsCopy[0].weapon = item.image;
           break;
         case 'chest':
+          swappedOutItem = equippedItemsCopy[0].chest;
           equippedItemsCopy[0].chest = item.image;
           break;
         case 'gloves':
+          swappedOutItem = equippedItemsCopy[0].gloves;
           equippedItemsCopy[0].gloves = item.image;
           break;
         case 'boots':
+          swappedOutItem = equippedItemsCopy[0].boots;
           equippedItemsCopy[0].boots = item.image;
           break;
         case 'legs':
+          swappedOutItem = equippedItemsCopy[0].legs;
           equippedItemsCopy[0].legs = item.image;
           break;
         case 'ring':
+          swappedOutItem = equippedItemsCopy[0].ring;
           equippedItemsCopy[0].ring = item.image;
           break;
         default: ;
       }
+
       setEquippedItems([...equippedItems], equippedItemsCopy);
       console.log('playerStats', playerStats);
+
+      if (swappedOutItem) {
+        // remove stats from previous equipped item
+        let prevItem;
+        map.find(i => {
+          i.items.forEach(item => {
+            if (item.image === swappedOutItem) {
+              prevItem = item;
+            }
+          });
+        });
+        console.log(prevItem);
+        if (prevItem?.statUpgrade) {
+          const playerStatsCopy = playerStats;
+          playerStatsCopy[0].strength = playerStatsCopy[0].strength - prevItem.statUpgrade.strength;
+          playerStatsCopy[0].agility = playerStatsCopy[0].agility - prevItem.statUpgrade.agility;
+          setPlayerStats([...playerStats], playerStatsCopy)
+        }
+      }
+
       // upgrade stats from item
       if (item.statUpgrade) {
         const playerStatsCopy = playerStats;
-        playerStatsCopy[0].strength += item.statUpgrade.strength;
-        playerStatsCopy[0].agility += item.statUpgrade.agility;
+        playerStatsCopy[0].strength = playerStatsCopy[0].strength + item.statUpgrade.strength;
+        playerStatsCopy[0].agility = playerStatsCopy[0].agility + item.statUpgrade.agility;
         setPlayerStats([...playerStats], playerStatsCopy)
       }
       console.log('new playerStats', playerStats);
     } else {
       console.log(`you already have that item equipped`);
       setFlash({ slot: item.slot, value: true });
-
       setTimeout(() => {
         setFlash({ slot: '', value: false });
       }, 500);
