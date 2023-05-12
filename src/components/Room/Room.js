@@ -21,10 +21,12 @@ const Room = ({ room, description, items, inventory, onInteract, onNavigate }) =
               <ul className='room-item-list'>
                 {items.filter(item => !inventory.includes(item)).map((item, index) => (
                   <li key={index} className='room-list-item'>
-                    <Item name={item.name} img={item.image} description={item.description} />
+                    <button className="room-item-button" onClick={() => onInteract(item)}>
+                      <Item onClick={() => onInteract(item)} name={item.name} img={item.image} description={item.description} />
+                    </button>
                     {/* <img className='room-item-image' alt={item.name} src={item.image} />
                     <span className="room-item-text">{item.name} - {item.description}</span> */}
-                    <button className="room-button-item" onClick={() => onInteract(item)}>Pick up</button>
+                    {/* <button className="room-button-item" onClick={() => onInteract(item)}>Pick up</button> */}
                   </li>
                 ))}
               </ul>

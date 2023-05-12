@@ -10,7 +10,7 @@ import Inventory from "./components/Inventory/Inventory";
 import Character from "./components/Character/Character";
 
 // images
-import Person from "./resources/images/person.png";
+import Backpack from "./resources/images/light-backpack.png";
 
 // helpers
 import { generateRooms } from "./helpers/setup";
@@ -175,7 +175,7 @@ const App = () => {
           </div>
           <div className={`panel ${panelActive ? 'active' : ''}`}>
             <button className="toggle-button" onClick={togglePanel}>
-              <img alt='player' className='character-stat-icon' src={Person} />
+              <img alt='player' className='character-stat-icon' src={Backpack} />
             </button>
             <Character playerName={playerName} playerStats={playerStats} equippedItems={equippedItems} flash={flash} />
             <Inventory items={playerInventory} equippedItems={equippedItems} onUse={handleUse} />

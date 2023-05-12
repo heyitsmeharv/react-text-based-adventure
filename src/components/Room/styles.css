@@ -82,6 +82,12 @@
   border-bottom: 2px solid #fff;
 }
 
+.room-item-button {
+  outline: none;
+  border: none;
+  background: none;
+}
+
 .room-scenario {}
 
 .room-item-list {
