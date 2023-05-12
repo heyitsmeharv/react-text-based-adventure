@@ -21,7 +21,7 @@ const App = () => {
   const [playerName, setPlayerName] = useState('');
   const [map, setMap] = useState(null);
   const [currentRoom, setCurrentRoom] = useState(null);
-  const [playerStats, setPlayerStats] = useState([{ health: 100, strength: 10, agility: 5, attackPower: 5 }]);
+  const [playerStats, setPlayerStats] = useState([{ health: 100, strength: 2, agility: 3, attackPower: 5 }]);
   const [playerInventory, setPlayerInventory] = useState([]);
   const [equippedItems, setEquippedItems] = useState([{ helmet: null, cape: null, shoulders: null, weapon: null, chest: null, gloves: null, boots: null, legs: null, ring: null }]);
   const [flash, setFlash] = useState({ slot: '', value: false });

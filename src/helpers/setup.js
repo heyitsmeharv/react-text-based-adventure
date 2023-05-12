@@ -86,10 +86,15 @@ export const generateRooms = randomChance => {
           // add random items to the room (implement a spawn chance).
           const itemSpawnChance = randomChance(0.5);
           for (let x = 0; x < items.length; x++) {
-            if (itemSpawnChance) {
-              // we don't want to place duplicate items into the room
-              if (!room.items.includes(randomItem)) {
-                room.items.push(randomItem);
+            const itemAlreadyExists = rooms.some(r => {
+              return r[x]?.items.includes(randomItem);
+            });
+            if (!itemAlreadyExists) {
+              if (itemSpawnChance) {
+                // we don't want to place duplicate items into the room
+                if (!room.items.includes(randomItem)) {
+                  room.items.push(randomItem);
+                }
               }
             }
           }

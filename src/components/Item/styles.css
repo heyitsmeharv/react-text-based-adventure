@@ -1,0 +1,26 @@
+.item-container {
+  position: relative;
+}
+
+.item-image {
+  width: 60px;
+  height: 60px;
+}
+
+.item-text {
+  position: absolute;
+  top: -10px;
+  left: 64px;
+  width: 220px;
+  padding: 8px;
+  border: 2px solid #FFF;
+  border-radius: 4px;
+  color: #FFF;
+  font-size: 1rem;
+  z-index: 100;
+}
+
+.item-text-header {
+  font-weight: bold;
+  font-style: italic;
+}

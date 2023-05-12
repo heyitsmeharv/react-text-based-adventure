@@ -26,7 +26,7 @@ export const Items = [
     name: `Sword`,
     image: BroadSword,
     slot: 'weapon',
-    description: `Increased your strength by +2`,
+    description: `Increases your strength by +2`,
     statUpgrade: { strength: 2, agility: 0 },
     taken: false
   },
@@ -34,7 +34,7 @@ export const Items = [
     name: `Boots`,
     image: Boots,
     slot: 'boots',
-    description: `Increased your agility by +2`,
+    description: `Increases your agility by +2`,
     statUpgrade: { strength: 0, agility: 2 },
     taken: false
   },
@@ -42,7 +42,7 @@ export const Items = [
     name: `Breastplate`,
     image: Breastplate,
     slot: 'chest',
-    description: `Increased your strength by +4`,
+    description: `Increases your strength by +4`,
     statUpgrade: { strength: 0, agility: 4 },
     taken: false
   },
@@ -50,7 +50,7 @@ export const Items = [
     name: `Cape`,
     image: Cape,
     slot: 'cape',
-    description: `Increased your agility by +2`,
+    description: `Increases your agility by +2`,
     statUpgrade: { strength: 0, agility: 2 },
     taken: false
   },
@@ -58,7 +58,7 @@ export const Items = [
     name: `Cape Armour`,
     image: CapeArmour,
     slot: 'cape',
-    description: `Increased your agility by +5`,
+    description: `Increases your agility by +5`,
     statUpgrade: { strength: 0, agility: 5 },
     taken: false
   },
@@ -66,7 +66,7 @@ export const Items = [
     name: `Chest Armour`,
     image: ChestArmour,
     slot: 'chest',
-    description: `Increased your strength by +2`,
+    description: `Increases your strength by +2`,
     statUpgrade: { strength: 2, agility: 0 },
     taken: false
   },
@@ -74,7 +74,7 @@ export const Items = [
     name: `Cowboy Boots`,
     image: CowboyBoots,
     slot: 'boots',
-    description: `Increased your agility by +1`,
+    description: `Increases your agility by +1`,
     statUpgrade: { strength: 0, agility: 1 },
     taken: false
   },
@@ -82,7 +82,7 @@ export const Items = [
     name: `Dorsal Scale Shoulders`,
     image: DorsalScale,
     slot: 'shoulders',
-    description: `Increased your strength by +5`,
+    description: `Increases your strength by +5`,
     statUpgrade: { strength: 5, agility: 0 },
     taken: false
   },
@@ -90,7 +90,7 @@ export const Items = [
     name: `Dwarf Helmet`,
     image: DwarfHelmet,
     slot: 'helmet',
-    description: `Increased your strength by +3`,
+    description: `Increases your strength by +3`,
     statUpgrade: { strength: 3, agility: 0 },
     taken: false
   },
@@ -98,14 +98,14 @@ export const Items = [
     name: `Fedora`,
     image: Fedora,
     slot: 'helmet',
-    description: `Increased your strength by +1`,
+    description: `Increases your strength by +1`,
     statUpgrade: { strength: 1, agility: 0 },
     taken: false
   },
   {
     name: `Fire Axe`,
     image: FireAxe,
-    description: `Increased your strength by +2`,
+    description: `Increases your strength by +2`,
     slot: 'weapon',
     statUpgrade: { strength: 2, agility: 0 },
     taken: false
@@ -113,7 +113,7 @@ export const Items = [
   {
     name: `Flower Hat`,
     image: FlowerHat,
-    description: `Increased your strength by +1`,
+    description: `Increases your strength by +1`,
     slot: 'helmet',
     statUpgrade: { strength: 1, agility: 0 },
     taken: false
@@ -122,7 +122,7 @@ export const Items = [
     name: `Gloves`,
     image: Gloves,
     slot: 'gloves',
-    description: `Increased your agility by +1`,
+    description: `Increases your agility by +1`,
     statUpgrade: { strength: 0, agility: 1 },
     taken: false
   },
@@ -147,7 +147,7 @@ export const Items = [
     image: LegArmour,
     slot: 'legs',
     statUpgrade: { strength: 3, agility: 0 },
-    description: `Increased your strength by +3`,
+    description: `Increases your strength by +3`,
     unlockDoor: true,
     taken: false
   },
@@ -164,7 +164,7 @@ export const Items = [
     image: MailedFist,
     slot: 'gloves',
     statUpgrade: { strength: 3, agility: 0 },
-    description: `Increased your strength by +3`,
+    description: `Increases your strength by +3`,
     unlockDoor: true,
     taken: false
   },
@@ -173,7 +173,7 @@ export const Items = [
     image: SpikedShoulderArmour,
     slot: 'shoulders',
     statUpgrade: { strength: 5, agility: 0 },
-    description: `Increased your strength by +5`,
+    description: `Increases your strength by +5`,
     unlockDoor: true,
     taken: false
   },
@@ -182,7 +182,7 @@ export const Items = [
     image: TrenchSpade,
     slot: 'weapon',
     statUpgrade: { strength: 2, agility: 0 },
-    description: `Increased your strength by +2`,
+    description: `Increases your strength by +2`,
     unlockDoor: true,
     taken: false
   },
@@ -191,7 +191,7 @@ export const Items = [
     image: WarlordHelmet,
     slot: 'helmet',
     statUpgrade: { strength: 5, agility: 0 },
-    description: `Increased your strength by +5`,
+    description: `Increases your strength by +5`,
     unlockDoor: true,
     taken: false
   },

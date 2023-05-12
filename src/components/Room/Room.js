@@ -1,6 +1,9 @@
 import React from 'react';
 import "./styles.css";
 
+// components
+import Item from '../Item/Item';
+
 const Room = ({ room, description, items, inventory, onInteract, onNavigate }) => {
   console.log('room', room);
   console.log('items', items);
@@ -18,8 +21,9 @@ const Room = ({ room, description, items, inventory, onInteract, onNavigate }) =
               <ul className='room-item-list'>
                 {items.filter(item => !inventory.includes(item)).map((item, index) => (
                   <li key={index} className='room-list-item'>
-                    <img className='room-item-image' alt={item.name} src={item.image} />
-                    <span className="room-item-text">{item.name} - {item.description}</span>
+                    <Item name={item.name} img={item.image} description={item.description} />
+                    {/* <img className='room-item-image' alt={item.name} src={item.image} />
+                    <span className="room-item-text">{item.name} - {item.description}</span> */}
                     <button className="room-button-item" onClick={() => onInteract(item)}>Pick up</button>
                   </li>
                 ))}

@@ -32,11 +32,11 @@ const Character = ({ playerName, playerStats, equippedItems, flash }) => {
         </div>
         <div className='character-stat-row'>
           <img alt='strength' className='character-stat-icon' src={Strength} />
-          <StatBar currentStatPercentage={strength} maxPercentage={100} />
+          <StatBar currentStatPercentage={strength} maxPercentage={30} />
         </div>
         <div className='character-stat-row'>
           <img alt='agility' className='character-stat-icon' src={Agility} />
-          <StatBar currentStatPercentage={agility} maxPercentage={100} />
+          <StatBar currentStatPercentage={agility} maxPercentage={20} />
         </div>
         <div className='character-stat-row'>
           <img alt='attackPower' className='character-stat-icon' src={AP} />
