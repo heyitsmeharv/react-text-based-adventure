@@ -58,7 +58,7 @@ export const generateRooms = randomChance => {
       }
 
       // Add enemies to the room
-      const randomEnemy = enemies[Math.floor(Math.random() * 3)];
+      const randomEnemy = enemies[Math.floor(Math.random() * 7)];
       const enemiesSpawnChance = randomChance(0.2);
       for (let x = 0; x < enemies.length; x++) {
         if (enemiesSpawnChance) {
@@ -99,7 +99,7 @@ export const generateRooms = randomChance => {
             }
           }
           // Add enemies to the room
-          const randomEnemy = enemies[Math.floor(Math.random() * 3)];
+          const randomEnemy = enemies[Math.floor(Math.random() * 7)];
           const enemiesSpawnChance = randomChance(0.2);
           for (let x = 0; x < enemies.length; x++) {
             if (enemiesSpawnChance) {
