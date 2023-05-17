@@ -123,13 +123,13 @@ const App = () => {
         // remove stats from previous equipped item
         let prevItem;
         map.find(i => {
-          i.items.forEach(item => {
+          return i.items.forEach(item => {
             if (item.image === swappedOutItem) {
               prevItem = item;
             }
           });
         });
-        console.log(prevItem);
+
         if (prevItem?.statUpgrade) {
           const playerStatsCopy = playerStats;
           playerStatsCopy[0].strength = playerStatsCopy[0].strength - prevItem.statUpgrade.strength;
@@ -145,7 +145,6 @@ const App = () => {
         playerStatsCopy[0].agility = playerStatsCopy[0].agility + item.statUpgrade.agility;
         setPlayerStats([...playerStats], playerStatsCopy)
       }
-      console.log('new playerStats', playerStats);
     } else {
       console.log(`you already have that item equipped`);
       setFlash({ slot: item.slot, value: true });
@@ -169,8 +168,8 @@ const App = () => {
         <Start inputRef={inputRef} handleStartGame={handleStartGame} />
         : null
       }
-      {currentRoom && (currentRoom.name !== 'Start' || currentRoom.name !== 'Start') &&
-        <div className="main-container">
+      {currentRoom && currentRoom.name !== 'Start' &&
+        <div className="main-container" key={Math.random()}>
           <div className="game-container">
             <Room
               room={map[currentRoom.id]}
