@@ -11,7 +11,8 @@ export const generateRooms = randomChance => {
       description: `This is the starting room`,
       items: [],
       enemies: [],
-      locked: false
+      locked: false,
+      explored: false
     }
   ];
   const listOfPotentialRooms = Rooms;
@@ -35,7 +36,8 @@ export const generateRooms = randomChance => {
         description: `${randomRoom.description}`,
         items: [],
         enemies: [],
-        locked: randomRoom.locked
+        locked: randomRoom.locked,
+        explored: false
       };
 
       // Add random items to the room.
@@ -121,7 +123,8 @@ export const generateRooms = randomChance => {
     description: `This is the end room`,
     items: [],
     enemies: [],
-    locked: false
+    locked: false,
+    explored: false
   }
 
   rooms.push(end);

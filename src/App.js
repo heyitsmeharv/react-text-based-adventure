@@ -8,9 +8,11 @@ import Start from "./components/Start/Start";
 import Room from "./components/Room/Room";
 import Inventory from "./components/Inventory/Inventory";
 import Character from "./components/Character/Character";
+import Map from './components/Map/Map';
 
 // images
 import Backpack from "./resources/images/light-backpack.png";
+import Position from "./resources/images/position-marker.png";
 
 // helpers
 import { generateRooms } from "./helpers/setup";
@@ -18,6 +20,7 @@ import { generateRooms } from "./helpers/setup";
 const App = () => {
   const inputRef = useRef();
   const [panelActive, setPanelActive] = useState(false);
+  const [mapActive, setMapActive] = useState(false);
   const [playerName, setPlayerName] = useState('');
   const [map, setMap] = useState(null);
   const [currentRoom, setCurrentRoom] = useState(null);
@@ -53,6 +56,7 @@ const App = () => {
   }
 
   const handleNavigate = () => {
+    map[currentRoom.id].explored = true;
     setCurrentRoom(map[currentRoom.id + 1]);
     whereAmI();
   }
@@ -155,6 +159,10 @@ const App = () => {
     setPanelActive(!panelActive);
   };
 
+  const toggleMap = () => {
+    setMapActive(!mapActive);
+  };
+
   return (
     <>
       {currentRoom && currentRoom.name === 'Start' ?
@@ -168,17 +176,24 @@ const App = () => {
               room={map[currentRoom.id]}
               description={map[currentRoom.id].description}
               items={map[currentRoom.id].items}
+              enemies={map[currentRoom.id].enemies}
               inventory={playerInventory}
               onInteract={handleInteract}
               onNavigate={handleNavigate}
             />
           </div>
           <div className={`panel ${panelActive ? 'active' : ''}`}>
-            <button className="toggle-button" onClick={togglePanel}>
-              <img alt='player' className='character-stat-icon' src={Backpack} />
+            <button className="toggle-button-inventory" onClick={togglePanel}>
+              <img alt='inventory' className='inventory-icon' src={Backpack} />
             </button>
             <Character playerName={playerName} playerStats={playerStats} equippedItems={equippedItems} flash={flash} />
             <Inventory items={playerInventory} equippedItems={equippedItems} onUse={handleUse} />
+          </div>
+          <button className="toggle-button-map" onClick={toggleMap}>
+            <img alt='map' className='map-icon' src={Position} />
+          </button>
+          <div className={`map ${mapActive ? 'active' : ''}`}>
+            <Map map={map} currentRoom={map[currentRoom.id]} />
           </div>
         </div>
       }

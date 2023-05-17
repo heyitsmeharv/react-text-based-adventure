@@ -4,7 +4,7 @@ import "./styles.css";
 // components
 import Item from '../Item/Item';
 
-const Room = ({ room, description, items, inventory, onInteract, onNavigate }) => {
+const Room = ({ room, description, items, enemies, inventory, onInteract, onNavigate }) => {
   console.log('room', room);
   console.log('items', items);
   return (
@@ -24,16 +24,34 @@ const Room = ({ room, description, items, inventory, onInteract, onNavigate }) =
                     <button className="room-item-button" onClick={() => onInteract(item)}>
                       <Item onClick={() => onInteract(item)} name={item.name} img={item.image} description={item.description} />
                     </button>
-                    {/* <img className='room-item-image' alt={item.name} src={item.image} />
-                    <span className="room-item-text">{item.name} - {item.description}</span> */}
-                    {/* <button className="room-button-item" onClick={() => onInteract(item)}>Pick up</button> */}
                   </li>
                 ))}
               </ul>
             </>
           ) : (
-              <p className="room-text">There are no items in this room.</p>
-            )}
+            <p className="room-text">There are no items in this room.</p>
+          )}
+          {/* TODO: FIX THIS */}
+          {items.length > 0 && items.every(i => i.taken === true) &&
+            <p className="room-text">You have looted this room.</p>
+          }
+        </div>
+        <div className='room-enemies'>
+          {enemies.length > 0 && enemies.every(i => i.killed === false) ? (
+            <>
+              <h1 className="room-text-header">Enemies in the room:</h1>
+              <ul className='room-enemies-list'>
+                {enemies.map((enemy, index) => (
+                  <li key={index} className='room-list-enemy'>
+                    <img className='room-item-image' alt={enemy.name} src={enemy.image} />
+                    <span className="room-enemy-text">{enemy.name} - {enemy.description}</span>
+                  </li>
+                ))}
+              </ul>
+            </>
+          ) : (
+            <p className="room-text">There are no enemies in this room.</p>
+          )}
           {/* TODO: FIX THIS */}
           {items.length > 0 && items.every(i => i.taken === true) &&
             <p className="room-text">You have looted this room.</p>

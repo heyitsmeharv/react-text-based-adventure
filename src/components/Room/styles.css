@@ -116,4 +116,24 @@
   font-size: 1.5rem;
 }
 
+.room-enemies {
+  margin: 10% 0px;
+}
+
+.room-enemy-list {
+  list-style-type: none;
+  padding: 0px;
+}
+
+.room-list-enemy {
+  display: flex;
+  align-items: center;
+}
+
+.room-enemy-text {
+  margin-left: 10px;
+  color: #FFF;
+  font-size: 1.5rem;
+}
+
 .room-options {}
