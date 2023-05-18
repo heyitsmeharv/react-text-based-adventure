@@ -6,24 +6,9 @@
 #FFF
 */
 
-@keyframes slide-in-game {
-  from {
-    -webkit-transform: translate3d(-50%, 0, 0);
-    transform: translate3d(-50%, 0, 0);
-    opacity: 0;
-  }
-
-  to {
-    -webkit-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0);
-    opacity: 1;
-  }
-}
-
 .room-container {
   color: #FFF;
   margin: 5%;
-  animation: slide-in-game 0.5s forwards;
 }
 
 .room-description {

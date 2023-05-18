@@ -1,7 +1,9 @@
 .map-container {
   display: flex;
   flex-wrap: wrap;
-  margin: 10%;
+  margin: auto;
+  width: 60%;
+  padding: 5% 0;
 }
 
 .room {
