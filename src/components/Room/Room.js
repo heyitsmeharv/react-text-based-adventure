@@ -3,6 +3,7 @@ import "./styles.css";
 
 // components
 import Item from '../Item/Item';
+import Hover from '../Hover/Hover';
 import StatBar from '../Character/StatBar';
 
 const Room = ({ room, description, items, enemies, inventory, onInteract, onNavigate }) => {
@@ -38,9 +39,10 @@ const Room = ({ room, description, items, enemies, inventory, onInteract, onNavi
               <div className='room-enemy-container'>
                 {enemies.map((enemy, index) => (
                   <div key={index} className='room-enemy-wrapper'>
-                    <span className="room-enemy-text">{enemy.name} - {enemy.description}</span>
+                    {/* <span className="room-enemy-text">{enemy.name} - {enemy.description}</span> */}
                     <StatBar currentStatPercentage={enemy.stats.health} maxPercentage={enemy.stats.health} />
-                    <img className='room-enemy-image' alt={enemy.name} src={enemy.image} />
+                    <Hover header={enemy.name} description={enemy.description} img={enemy.image} size="large" />
+                    {/* <img className='room-enemy-image' alt={enemy.name} src={enemy.image} /> */}
                   </div>
                 ))}
               </div>

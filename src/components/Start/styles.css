@@ -1,7 +1,7 @@
 .title-container {
   position: absolute;
   top: 40%;
-  left: 50%; 
+  left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
   animation: slide-in 0.5s forwards;
@@ -152,7 +152,7 @@
   margin: 0 auto;
 }
 
-.typewriter h1 {
+.typewriter h3 {
   color: #fff;
   overflow: hidden;
   /* Ensures the content is not revealed until the animation */
@@ -194,16 +194,7 @@
 }
 
 @media only screen and (max-width: 748px) {
-
-  .start-title {
-;
-  }
-
   .start-input {
     margin-bottom: 40px;
-  }
-
-  .typewriter h1 {
-
   }
 }
