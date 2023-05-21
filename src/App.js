@@ -71,7 +71,7 @@ const App = () => {
   const handleUse = item => {
     console.log('used item', item);
     // check if item isn't already equipped
-    const isEquipped = equippedItems.some(i => i[item.slot] === item.image);
+    const isEquipped = equippedItems.some(i => i[item.slot]?.image === item.image);
 
     if (!isEquipped) {
       let swappedOutItem;
