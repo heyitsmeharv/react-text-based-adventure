@@ -79,39 +79,39 @@ const App = () => {
       switch (item.slot) {
         case 'helmet':
           swappedOutItem = equippedItemsCopy[0].helmet;
-          equippedItemsCopy[0].helmet = item.image;
+          equippedItemsCopy[0].helmet = item;
           break;
         case 'cape':
           swappedOutItem = equippedItemsCopy[0].cape;
-          equippedItemsCopy[0].cape = item.image;
+          equippedItemsCopy[0].cape = item;
           break;
         case 'shoulders':
           swappedOutItem = equippedItemsCopy[0].shoulders;
-          equippedItemsCopy[0].shoulders = item.image;
+          equippedItemsCopy[0].shoulders = item;
           break;
         case 'weapon':
           swappedOutItem = equippedItemsCopy[0].weapon;
-          equippedItemsCopy[0].weapon = item.image;
+          equippedItemsCopy[0].weapon = item;
           break;
         case 'chest':
           swappedOutItem = equippedItemsCopy[0].chest;
-          equippedItemsCopy[0].chest = item.image;
+          equippedItemsCopy[0].chest = item;
           break;
         case 'gloves':
           swappedOutItem = equippedItemsCopy[0].gloves;
-          equippedItemsCopy[0].gloves = item.image;
+          equippedItemsCopy[0].gloves = item;
           break;
         case 'boots':
           swappedOutItem = equippedItemsCopy[0].boots;
-          equippedItemsCopy[0].boots = item.image;
+          equippedItemsCopy[0].boots = item;
           break;
         case 'legs':
           swappedOutItem = equippedItemsCopy[0].legs;
-          equippedItemsCopy[0].legs = item.image;
+          equippedItemsCopy[0].legs = item;
           break;
         case 'ring':
           swappedOutItem = equippedItemsCopy[0].ring;
-          equippedItemsCopy[0].ring = item.image;
+          equippedItemsCopy[0].ring = item;
           break;
         default: ;
       }
@@ -170,27 +170,25 @@ const App = () => {
       }
       {currentRoom && currentRoom.name !== 'Start' &&
         <div className="main-container" key={Math.random()}>
-          <div className="game-container">
-            <Room
-              room={map[currentRoom.id]}
-              description={map[currentRoom.id].description}
-              items={map[currentRoom.id].items}
-              enemies={map[currentRoom.id].enemies}
-              inventory={playerInventory}
-              onInteract={handleInteract}
-              onNavigate={handleNavigate}
-            />
-          </div>
-          <div className={`panel ${panelActive ? 'active' : ''}`}>
-            <button className="toggle-button-inventory" onClick={togglePanel}>
-              <img alt='inventory' className='inventory-icon' src={Backpack} />
-            </button>
-            <Character playerName={playerName} playerStats={playerStats} equippedItems={equippedItems} flash={flash} />
-            <Inventory items={playerInventory} equippedItems={equippedItems} onUse={handleUse} />
-          </div>
+          <Room
+            room={map[currentRoom.id]}
+            description={map[currentRoom.id].description}
+            items={map[currentRoom.id].items}
+            enemies={map[currentRoom.id].enemies}
+            inventory={playerInventory}
+            onInteract={handleInteract}
+            onNavigate={handleNavigate}
+          />
+          <button className="toggle-button-inventory" onClick={togglePanel}>
+            <img alt='inventory' className='inventory-icon' src={Backpack} />
+          </button>
           <button className="toggle-button-map" onClick={toggleMap}>
             <img alt='map' className='map-icon' src={Position} />
           </button>
+          <div className={`panel ${panelActive ? 'active' : ''}`}>
+            <Character playerName={playerName} playerStats={playerStats} equippedItems={equippedItems} flash={flash} />
+            <Inventory items={playerInventory} equippedItems={equippedItems} onUse={handleUse} />
+          </div>
           <div className={`map ${mapActive ? 'active' : ''}`}>
             <Map map={map} currentRoom={map[currentRoom.id]} />
           </div>

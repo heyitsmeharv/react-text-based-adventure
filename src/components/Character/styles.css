@@ -28,32 +28,25 @@
 }
 
 .character-stat-text {
-  font-size: 2rem;
   font-weight: 400;
   color: #FFF;
   margin: 0 10px;
 }
 
 .character-hero-name {
-  font-size: 2rem;
   font-weight: bold;
   font-style: italic;
   color: #FFF;
 }
 
 .character-hero-stats {
-  font-size: 2rem;
   font-weight: bold;
   color: #FFF;
 }
 
-.character-title {
-  font-size: 1.5rem;
-}
+.character-title {}
 
-.character-sub-title {
-  font-size: 1rem;
-}
+.character-sub-title {}
 
 .character-equipment-wrapper {
   display: flex;

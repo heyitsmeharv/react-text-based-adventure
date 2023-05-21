@@ -8,7 +8,6 @@
 }
 
 .start-title {
-  font-size: 4rem;
   color: #fff;
 }
 
@@ -18,7 +17,6 @@
   border-bottom: 2px solid #777;
   color: #ccc;
   padding: 10px;
-  font-size: 18px;
   font-weight: bold;
   letter-spacing: 2px;
   text-shadow: 1px 1px #000;
@@ -36,7 +34,6 @@
   border: none;
   color: #ccc;
   padding: 10px 20px;
-  font-size: 18px;
   font-weight: bold;
   letter-spacing: 2px;
   text-shadow: 1px 1px #000;
@@ -199,7 +196,7 @@
 @media only screen and (max-width: 748px) {
 
   .start-title {
-    font-size: 2.5rem;
+;
   }
 
   .start-input {
@@ -207,6 +204,6 @@
   }
 
   .typewriter h1 {
-    font-size: 17px;
+
   }
 }

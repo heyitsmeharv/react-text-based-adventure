@@ -3,6 +3,7 @@ import "./styles.css";
 
 // components
 import StatBar from "./StatBar";
+import Item from "../Item/Item";
 
 // images
 import Stats from "../../resources/images/histogram.png";
@@ -16,65 +17,62 @@ import Equipment from "../../resources/images/battle-gear.png";
 const Character = ({ playerName, playerStats, equippedItems, flash }) => {
   const [{ health, strength, agility, attackPower }] = playerStats;
   const [{ helmet, cape, shoulders, weapon, chest, gloves, boots, legs, ring }] = equippedItems;
-
-  console.log('flash', flash);
-
+  
   return (
     <div className='character-container'>
       <div className='character-equipment-wrapper-text-top'>
-        <img alt='player stats' className='character-stat-icon' src={Stats} />
+        <Item name="Player Stats" img={Stats} description="" small={true} />
         <h2 className="character-heading-text">{playerName}</h2>
       </div>
       <div className='character-icon-wrapper'>
         <div className='character-stat-row'>
-          <img alt='health' className='character-stat-icon' src={Health} />
+          <Item name="Health" img={Health} description="" small={true} />
           <StatBar currentStatPercentage={health} maxPercentage={100} />
         </div>
         <div className='character-stat-row'>
-          <img alt='strength' className='character-stat-icon' src={Strength} />
+          <Item name="Strength" img={Strength} description="" small={true} />
           <StatBar currentStatPercentage={strength} maxPercentage={30} />
         </div>
         <div className='character-stat-row'>
-          <img alt='agility' className='character-stat-icon' src={Agility} />
+          <Item name="Agility" img={Agility} description="" small={true} />
           <StatBar currentStatPercentage={agility} maxPercentage={20} />
         </div>
         <div className='character-stat-row'>
-          <img alt='attackPower' className='character-stat-icon' src={AP} />
+          <Item name="Attack Power" img={AP} description="" small={true} />
           <StatBar currentStatPercentage={attackPower} maxPercentage={100} />
         </div>
       </div>
       <div className="character-equipment-wrapper">
         <div className='character-equipment-wrapper-text-bottom'>
-          <img alt='equipped items' className='character-stat-icon' src={Equipment} />
-          <h2 className="character-heading-text">Equipped Items</h2>
+          <Item name="Equipped Items" img={Equipment} description="" small={true} />
         </div>
         <div className='character-equipment'>
           <div className={`shoulder ${flash.slot === 'shoulders' && flash.value ? 'flash' : ''}`} >
-            <img alt='shoulder' className='character-stat-icon' src={shoulders ? shoulders : Empty} />
+            <Item name={shoulders?.name} img={shoulders?.image ? shoulders?.image : Empty} description={shoulders?.description} />
           </div>
           <div className={`helmet ${flash.slot === 'helmet' && flash.value ? 'flash' : ''}`} >
-            <img alt='helmet' className='character-stat-icon' src={helmet ? helmet : Empty} />
+            <Item name={helmet?.name} img={helmet?.image ? helmet?.image : Empty} description={helmet?.description} />
           </div>
           <div className={`cape ${flash.slot === 'cape' && flash.value ? 'flash' : ''}`} >
-            <img alt='cape' className='character-stat-icon' src={cape ? cape : Empty} />
+            <Item name={cape?.name} img={cape?.image ? cape?.image : Empty} description={cape?.description} />
           </div>
           <div className={`weapon ${flash.slot === 'weapon' && flash.value ? 'flash' : ''}`} >
-            <img alt='weapon' className='character-stat-icon' src={weapon ? weapon : Empty} />
+            <Item name={weapon?.name} img={weapon?.image ? weapon?.image : Empty} description={weapon?.description} />
           </div>
           <div className={`chest ${flash.slot === 'chest' && flash.value ? 'flash' : ''}`} >
-            <img alt='chest' className='character-stat-icon' src={chest ? chest : Empty} />
+            <Item name={chest?.name} img={chest?.image ? chest?.image : Empty} description={chest?.description} />
           </div>
           <div className={`gloves ${flash.slot === 'gloves' && flash.value ? 'flash' : ''}`} >
-            <img alt='gloves' className='character-stat-icon' src={gloves ? gloves : Empty} />
+            <Item name={gloves?.name} img={gloves?.image ? gloves?.image : Empty} description={gloves?.description} />
           </div>
           <div className={`boots ${flash.slot === 'boots' && flash.value ? 'flash' : ''}`} >
-            <img alt='boots' className='character-stat-icon' src={boots ? boots : Empty} />
+            <Item name={boots?.name} img={boots?.image ? boots?.image : Empty} description={boots?.description} />
           </div>
           <div className={`legs ${flash.slot === 'legs' && flash.value ? 'flash' : ''}`} >
-            <img alt='legs' className='character-stat-icon' src={legs ? legs : Empty} />
+            <Item name={legs?.name} img={legs?.image ? legs?.image : Empty} description={legs?.description} />
           </div>
           <div className={`ring ${flash.slot === 'ring' && flash.value ? 'flash' : ''}`} >
-            <img alt='ring' className='character-stat-icon' src={ring ? ring : Empty} />
+            <Item name={ring?.name} img={ring?.image ? ring?.image : Empty} description={ring?.description} />
           </div>
         </div>
       </div>

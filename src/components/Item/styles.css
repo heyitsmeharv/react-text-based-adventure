@@ -2,6 +2,10 @@
   position: relative;
 }
 
+.item-container.none {
+  display: none;
+}
+
 .item-image {
   width: 60px;
   height: 60px;
@@ -16,9 +20,12 @@
   border: 2px solid #FFF;
   border-radius: 4px;
   color: #FFF;
-  font-size: 1rem;
-  z-index: 100;
 }
+
+.item-text.small {
+  width: fit-content;
+}
+
 
 .item-text-header {
   font-weight: bold;

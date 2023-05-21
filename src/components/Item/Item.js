@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import "./styles.css";
 
-const Item = ({ name, img, description }) => {
+const Item = ({ name, img, description, small }) => {
   const [isHovered, setIsHovered] = useState(false);
+
+  console.log('item - ', name, img, description, small);
 
   const handleMouseEnter = () => {
     setIsHovered(true);
@@ -19,7 +21,8 @@ const Item = ({ name, img, description }) => {
       onMouseLeave={handleMouseLeave}
     >
       <img className="item-image" alt={name} src={img} />
-      {isHovered && <div className="item-text"><div className="item-text-header">{name}</div>{description}</div>}
+      {isHovered && name !== undefined && <div className={`item-text ${small ? 'small' : ''}`}>
+        <div className="item-text-header">{name}</div>{description}</div>}
     </div>
   );
 };

@@ -8,7 +8,7 @@
 
 .room-container {
   color: #FFF;
-  margin: 5%;
+  margin: auto;
 }
 
 .room-description {
@@ -21,13 +21,11 @@
 
 .room-text-header {
   margin: 0px 0px 24px 0px;
-  font-size: 2rem;
   color: #FFF;
 }
 
 .room-text {
-  color: #FFF;
-  font-size: 1.5rem;
+  color: #FFF;;
 }
 
 .room-button {
@@ -35,7 +33,6 @@
   border: none;
   color: #ccc;
   padding: 10px 20px;
-  font-size: 18px;
   font-weight: bold;
   letter-spacing: 2px;
   text-shadow: 1px 1px #000;
@@ -53,7 +50,6 @@
   border: none;
   color: #ccc;
   padding: 10px 20px;
-  font-size: 18px;
   font-weight: bold;
   letter-spacing: 2px;
   text-shadow: 1px 1px #000;
@@ -86,9 +82,7 @@
   align-items: center;
 }
 
-.room-items {
-  margin: 10% 0px;
-}
+.room-items {}
 
 .room-item-image {
   width: 60px;
@@ -97,13 +91,10 @@
 
 .room-item-text {
   margin-left: 10px;
-  color: #FFF;
-  font-size: 1.5rem;
+  color: #FFF;;
 }
 
-.room-enemies {
-  margin: 10% 0px;
-}
+.room-enemies {}
 
 .room-enemy-list {
   list-style-type: none;
@@ -117,8 +108,7 @@
 
 .room-enemy-text {
   margin-left: 10px;
-  color: #FFF;
-  font-size: 1.5rem;
+  color: #FFF;;
 }
 
 .room-options {}
