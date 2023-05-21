@@ -124,7 +124,7 @@ const App = () => {
         let prevItem;
         map.find(i => {
           return i.items.forEach(item => {
-            if (item.image === swappedOutItem) {
+            if (item.image === swappedOutItem.image) {
               prevItem = item;
             }
           });

@@ -4,8 +4,6 @@ import "./styles.css";
 const Item = ({ name, img, description, small }) => {
   const [isHovered, setIsHovered] = useState(false);
 
-  console.log('item - ', name, img, description, small);
-
   const handleMouseEnter = () => {
     setIsHovered(true);
   };
