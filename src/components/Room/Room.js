@@ -3,6 +3,7 @@ import "./styles.css";
 
 // components
 import Item from '../Item/Item';
+import StatBar from '../Character/StatBar';
 
 const Room = ({ room, description, items, enemies, inventory, onInteract, onNavigate }) => {
   console.log('room', room);
@@ -15,9 +16,8 @@ const Room = ({ room, description, items, enemies, inventory, onInteract, onNavi
           <span className="room-text">{description}</span>
         </div>
         <div className='room-items'>
-          {items.length > 0 && items.every(i => i.taken === false) ? (
+          {/* {items.length > 0 && items.every(i => i.taken === false) ? (
             <>
-              <h1 className="room-text-header">Items in the room:</h1>
               <ul className='room-item-list'>
                 {items.filter(item => !inventory.includes(item)).map((item, index) => (
                   <li key={index} className='room-list-item'>
@@ -30,38 +30,37 @@ const Room = ({ room, description, items, enemies, inventory, onInteract, onNavi
             </>
           ) : (
             <p className="room-text">There are no items in this room.</p>
-          )}
-          {/* TODO: FIX THIS */}
-          {items.length > 0 && items.every(i => i.taken === true) &&
-            <p className="room-text">You have looted this room.</p>
-          }
+          )} */}
         </div>
         <div className='room-enemies'>
-          {enemies.length > 0 && enemies.every(i => i.killed === false) ? (
+          {enemies.length > 0 && enemies.every(i => i.killed === false) && (
             <>
-              <h1 className="room-text-header">Enemies in the room:</h1>
-              <ul className='room-enemies-list'>
+              <div className='room-enemy-container'>
                 {enemies.map((enemy, index) => (
-                  <li key={index} className='room-list-enemy'>
-                    <img className='room-item-image' alt={enemy.name} src={enemy.image} />
+                  <div key={index} className='room-enemy-wrapper'>
                     <span className="room-enemy-text">{enemy.name} - {enemy.description}</span>
-                  </li>
+                    <StatBar currentStatPercentage={enemy.stats.health} maxPercentage={enemy.stats.health} />
+                    <img className='room-enemy-image' alt={enemy.name} src={enemy.image} />
+                  </div>
                 ))}
-              </ul>
+              </div>
             </>
-          ) : (
-            <p className="room-text">There are no enemies in this room.</p>
           )}
-          {/* TODO: FIX THIS */}
-          {items.length > 0 && items.every(i => i.taken === true) &&
-            <p className="room-text">You have looted this room.</p>
-          }
         </div>
       </div>
       <div className='room-options'>
-        <button className="room-button" onClick={onNavigate}>Look around</button>
+        {enemies.length === 0 &&
+          <button button className="room-button" onClick={onNavigate}>Look around</button>
+        }
+        <button className="room-button" onClick={onNavigate}>Loot the room</button>
+        {enemies.length > 0 &&
+          <>
+            <button className="room-button" onClick={onNavigate}>Escape</button>
+            <button className="room-button" onClick={onNavigate}>Attack</button>
+          </>
+        }
       </div>
-    </div>
+    </div >
   );
 };
 

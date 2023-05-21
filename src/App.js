@@ -11,7 +11,7 @@ import Character from "./components/Character/Character";
 import Map from './components/Map/Map';
 
 // images
-import Backpack from "./resources/images/light-backpack.png";
+import Stats from "./resources/images/histogram.png";
 import Position from "./resources/images/position-marker.png";
 
 // helpers
@@ -180,7 +180,7 @@ const App = () => {
             onNavigate={handleNavigate}
           />
           <button className="toggle-button-inventory" onClick={togglePanel}>
-            <img alt='inventory' className='inventory-icon' src={Backpack} />
+            <img alt='inventory' className='inventory-icon' src={Stats} />
           </button>
           <button className="toggle-button-map" onClick={toggleMap}>
             <img alt='map' className='map-icon' src={Position} />

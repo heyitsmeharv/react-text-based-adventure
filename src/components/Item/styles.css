@@ -11,21 +11,28 @@
   height: 60px;
 }
 
-.item-text {
+.item-text-container {
   position: absolute;
   top: -10px;
   left: 64px;
   width: 220px;
   padding: 8px;
-  border: 2px solid #FFF;
+  border: 2px solid #DAA520;
   border-radius: 4px;
-  color: #FFF;
+  z-index: 1000;
 }
 
-.item-text.small {
+.item-text-container.small {
   width: fit-content;
 }
 
+.item-text-header {
+  color: #DDD4BB;
+}
+
+.item-text-description {
+  color: #FFF;
+}
 
 .item-text-header {
   font-weight: bold;

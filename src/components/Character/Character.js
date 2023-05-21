@@ -6,7 +6,6 @@ import StatBar from "./StatBar";
 import Item from "../Item/Item";
 
 // images
-import Stats from "../../resources/images/histogram.png";
 import Strength from "../../resources/images/biceps.png";
 import Health from "../../resources/images/heart-wings.png";
 import Agility from "../../resources/images/body-balance.png";
@@ -17,12 +16,11 @@ import Equipment from "../../resources/images/battle-gear.png";
 const Character = ({ playerName, playerStats, equippedItems, flash }) => {
   const [{ health, strength, agility, attackPower }] = playerStats;
   const [{ helmet, cape, shoulders, weapon, chest, gloves, boots, legs, ring }] = equippedItems;
-  
+
   return (
     <div className='character-container'>
       <div className='character-equipment-wrapper-text-top'>
-        <Item name="Player Stats" img={Stats} description="" small={true} />
-        <h2 className="character-heading-text">{playerName}</h2>
+        <h2 className="character-heading-text">Player Stats</h2>
       </div>
       <div className='character-icon-wrapper'>
         <div className='character-stat-row'>
