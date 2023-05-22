@@ -15,7 +15,7 @@
 
 .panel {
   width: 0;
-  transition: width 0.5s ease-in-out;
+  transition: width 0.8s ease-in-out;
   background-color: #101010;
   overflow: hidden;
 }
