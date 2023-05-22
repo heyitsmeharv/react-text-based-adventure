@@ -169,7 +169,7 @@ const App = () => {
         : null
       }
       {currentRoom && currentRoom.name !== 'Start' &&
-        <div className="main-container" key={Math.random()}>
+        <div className="main-container">
           <Room
             room={map[currentRoom.id]}
             description={map[currentRoom.id].description}

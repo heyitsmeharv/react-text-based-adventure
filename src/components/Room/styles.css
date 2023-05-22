@@ -111,8 +111,14 @@
   ;
 }
 
-.room-enemies {
+.room-enemy-container {
+  display: flex;
+  justify-content: space-evenly;
   animation: slide-in-bottom 0.5s forwards;
+}
+
+.room-enemies {
+  /* animation: slide-in-bottom 0.5s forwards; */
 }
 
 .room-enemy-list {
