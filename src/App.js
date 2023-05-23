@@ -28,6 +28,7 @@ const App = () => {
   const [playerInventory, setPlayerInventory] = useState([]);
   const [equippedItems, setEquippedItems] = useState([{ helmet: null, cape: null, shoulders: null, weapon: null, chest: null, gloves: null, boots: null, legs: null, ring: null }]);
   const [flash, setFlash] = useState({ slot: '', value: false });
+  const [takeDamage, setTakeDamage] = useState(false);
 
   // used for debugging.
   const whereAmI = () => {
@@ -59,6 +60,21 @@ const App = () => {
     map[currentRoom.id].explored = true;
     setCurrentRoom(map[currentRoom.id + 1]);
     whereAmI();
+  }
+
+  // the player will have a random chance of taking damage.
+  const handleLootTheRoom = () => {
+    const unlucky = randomChance(0.2);
+    if (unlucky) {
+      const copyPlayerStats = playerStats;
+      copyPlayerStats[0].health = copyPlayerStats[0].health - 10;
+      setPlayerStats(copyPlayerStats);
+      setTakeDamage(true);
+      setTimeout(() => {
+        setTakeDamage(false);
+      }, 500);
+    }
+    handleNavigate();
   }
 
   // used to proceed through the next room.
@@ -169,7 +185,7 @@ const App = () => {
         : null
       }
       {currentRoom && currentRoom.name !== 'Start' &&
-        <div className="main-container">
+        <div className={`main-container ${takeDamage ? 'flash' : ''}`}>
           <Room
             room={map[currentRoom.id]}
             description={map[currentRoom.id].description}
@@ -178,6 +194,7 @@ const App = () => {
             inventory={playerInventory}
             onInteract={handleInteract}
             onNavigate={handleNavigate}
+            onLootRoom={handleLootTheRoom}
           />
           <button className="toggle-button-inventory" onClick={togglePanel}>
             <img alt='inventory' className='inventory-icon' src={Stats} />

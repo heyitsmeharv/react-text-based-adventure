@@ -13,6 +13,10 @@
   height: 100vh;
 }
 
+.main-container.flash {
+  animation: flash 0.5s;
+}
+
 .panel {
   width: 0;
   transition: width 0.8s ease-in-out;

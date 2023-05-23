@@ -27,7 +27,6 @@
 
 .room-text {
   color: #FFF;
-  ;
 }
 
 .room-button {
@@ -114,12 +113,10 @@
 .room-enemy-container {
   display: flex;
   justify-content: space-evenly;
-  animation: slide-in-bottom 0.5s forwards;
+  animation: slide-in-bottom 0.8s forwards;
 }
 
-.room-enemies {
-  /* animation: slide-in-bottom 0.5s forwards; */
-}
+.room-enemies {}
 
 .room-enemy-list {
   list-style-type: none;
@@ -134,7 +131,6 @@
 .room-enemy-text {
   margin-left: 10px;
   color: #FFF;
-  ;
 }
 
 .room-options {}

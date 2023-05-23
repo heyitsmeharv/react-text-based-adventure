@@ -6,7 +6,7 @@ import Item from '../Item/Item';
 import Hover from '../Hover/Hover';
 import StatBar from '../Character/StatBar';
 
-const Room = ({ room, description, items, enemies, inventory, onInteract, onNavigate }) => {
+const Room = ({ room, description, items, enemies, inventory, onInteract, onNavigate, onLootRoom }) => {
   console.log('room', room);
   console.log('items', items);
   return (
@@ -54,7 +54,7 @@ const Room = ({ room, description, items, enemies, inventory, onInteract, onNavi
         {enemies.length === 0 &&
           <button button className="room-button" onClick={onNavigate}>Look around</button>
         }
-        <button className="room-button" onClick={onNavigate}>Loot the room</button>
+        <button className="room-button" onClick={onLootRoom}>Loot the room</button>
         {enemies.length > 0 &&
           <>
             <button className="room-button" onClick={onNavigate}>Escape</button>
