@@ -13,8 +13,8 @@
   height: 100vh;
 }
 
-.main-container.flash {
-  animation: flash 0.5s;
+.main-container.takeDamage {
+  animation: take-damage 0.5s ease-in-out infinite;
 }
 
 .panel {
@@ -91,5 +91,32 @@
 @media only screen and (min-width: 700px) and (max-width: 1400px) {
   .panel.active {
     width: 50%;
+  }
+}
+
+@keyframes take-damage {
+  0% {
+    transform: translate(0, 0);
+    background-color: #FFF;
+  }
+  10% {
+    transform: translate(-5px, -5px);
+  }
+  20% {
+    transform: translate(5px, 5px);
+  }
+  30% {
+    transform: translate(-5px, 5px);
+  }
+  40% {
+    transform: translate(5px, -5px);
+  }
+  50% {
+    transform: translate(0, 0);
+    background-color: #951D2D;
+  }
+  100% {
+    transform: translate(0, 0);
+    background-color: #FFF;
   }
 }

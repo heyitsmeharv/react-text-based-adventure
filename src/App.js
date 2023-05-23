@@ -185,7 +185,7 @@ const App = () => {
         : null
       }
       {currentRoom && currentRoom.name !== 'Start' &&
-        <div className={`main-container ${takeDamage ? 'flash' : ''}`}>
+        <div className={`main-container ${takeDamage ? 'takeDamage' : ''}`}>
           <Room
             room={map[currentRoom.id]}
             description={map[currentRoom.id].description}

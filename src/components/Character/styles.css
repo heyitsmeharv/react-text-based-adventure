@@ -186,15 +186,15 @@
 
 @keyframes flash {
   0% {
-    background-color: #fff;
+    background-color: #FFF;
   }
 
   50% {
-    background-color: red;
+    background-color: #951D2D;
   }
 
   100% {
-    background-color: #fff;
+    background-color: #FFF;
   }
 }
 
