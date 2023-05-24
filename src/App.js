@@ -11,7 +11,6 @@ import Character from "./components/Character/Character";
 
 // images
 import Stats from "./resources/images/histogram.png";
-import Position from "./resources/images/position-marker.png";
 
 // helpers
 import { generateRooms } from "./helpers/setup";
@@ -19,7 +18,6 @@ import { generateRooms } from "./helpers/setup";
 const App = () => {
   const inputRef = useRef();
   const [panelActive, setPanelActive] = useState(false);
-  const [mapActive, setMapActive] = useState(false);
   const [playerName, setPlayerName] = useState('');
   const [map, setMap] = useState(null);
   const [currentRoom, setCurrentRoom] = useState(null);
@@ -186,10 +184,6 @@ const App = () => {
     setPanelActive(!panelActive);
   };
 
-  const toggleMap = () => {
-    setMapActive(!mapActive);
-  };
-
   return (
     <>
       {currentRoom && currentRoom.name === 'Start' ?
@@ -215,9 +209,6 @@ const App = () => {
           />
           <button className="toggle-button-inventory" onClick={togglePanel}>
             <img alt='inventory' className='inventory-icon' src={Stats} />
-          </button>
-          <button className="toggle-button-map" onClick={toggleMap}>
-            <img alt='map' className='map-icon' src={Position} />
           </button>
           <div className={`panel ${panelActive ? 'active' : ''}`}>
             <Character playerName={playerName} playerStats={playerStats} equippedItems={equippedItems} flash={flash} />

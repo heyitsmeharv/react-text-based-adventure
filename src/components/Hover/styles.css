@@ -12,12 +12,13 @@
 .hover-text-container {
   position: relative;
   padding: 24px;
-  margin: 24px;
+  margin: 24px 0;
   border: 2px solid #DAA520;
   border-radius: 4px;
   z-index: 1000;
   height: 100px;
   width: 200px;
+  animation: slide-in-bottom 0.8s forwards;
 }
 
 .hover-text-header {
