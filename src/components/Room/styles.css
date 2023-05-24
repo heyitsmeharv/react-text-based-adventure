@@ -9,6 +9,7 @@
 .room-container {
   color: #FFF;
   margin: auto;
+  min-width: 65%;
 }
 
 .room-description {
@@ -65,20 +66,8 @@
   border-bottom: 2px solid #fff;
 }
 
-.room-item-button {
-  outline: none;
-  border: none;
-  background: none;
-  cursor: pointer;
-}
-
 .room-scenario {
   margin-bottom: 5%;
-}
-
-.room-item-list {
-  list-style-type: none;
-  padding: 0px;
 }
 
 .room-list-item {
@@ -97,11 +86,6 @@
 .room-enemy-image {
   width: 50%;
   height: 50%;
-}
-
-.room-item-image {
-  width: 60px;
-  height: 60px;
 }
 
 .room-item-text {
@@ -135,6 +119,21 @@
 
 .room-options {}
 
+.loot-button-container {
+  animation: slide-in 0.4s forwards;
+  float: right;
+}
+
+.loot-button.isLoot {
+  animation: shake 1s infinite;
+  outline: none;
+  background: none;
+  border: none;
+  border-radius: 25px;
+  box-shadow: 0 0 12px 4px #DAA520;
+  cursor: pointer;
+}
+
 @keyframes slide-in-bottom {
   from {
     transform: translate3d(0, 50%, 0);
@@ -144,5 +143,35 @@
   to {
     transform: translate3d(0, 0, 0);
     opacity: 1;
+  }
+}
+
+@keyframes shake {
+  0% {
+    transform: translate(0, 0);
+  }
+
+  10% {
+    transform: translate(-2px, -2px);
+  }
+
+  20% {
+    transform: translate(2px, 2px);
+  }
+
+  30% {
+    transform: translate(-2px, 2px);
+  }
+
+  40% {
+    transform: translate(2px, -2px);
+  }
+
+  50% {
+    transform: translate(0, 0);
+  }
+
+  100% {
+    transform: translate(0, 0);
   }
 }

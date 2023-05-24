@@ -29,6 +29,8 @@ const App = () => {
   const [equippedItems, setEquippedItems] = useState([{ helmet: null, cape: null, shoulders: null, weapon: null, chest: null, gloves: null, boots: null, legs: null, ring: null }]);
   const [flash, setFlash] = useState({ slot: '', value: false });
   const [takeDamage, setTakeDamage] = useState(false);
+  const [isLoot, setIsLoot] = useState(false);
+  const [onOpenLoot, setOnOpenLoot] = useState(false);
 
   // used for debugging.
   const whereAmI = () => {
@@ -59,6 +61,8 @@ const App = () => {
   const handleNavigate = () => {
     map[currentRoom.id].explored = true;
     setCurrentRoom(map[currentRoom.id + 1]);
+    setOnOpenLoot(false);
+    setIsLoot(false);
     whereAmI();
   }
 
@@ -74,7 +78,8 @@ const App = () => {
         setTakeDamage(false);
       }, 500);
     }
-    handleNavigate();
+    setIsLoot(true);
+    // handleNavigate();
   }
 
   // used to proceed through the next room.
@@ -170,6 +175,10 @@ const App = () => {
     }
   };
 
+  const onToggleLoot = () => {
+    setOnOpenLoot(!onOpenLoot);
+  }
+
   const togglePanel = () => {
     setPanelActive(!panelActive);
   };
@@ -195,6 +204,9 @@ const App = () => {
             onInteract={handleInteract}
             onNavigate={handleNavigate}
             onLootRoom={handleLootTheRoom}
+            onToggleLoot={onToggleLoot}
+            onOpenLoot={onOpenLoot}
+            isLoot={isLoot}
           />
           <button className="toggle-button-inventory" onClick={togglePanel}>
             <img alt='inventory' className='inventory-icon' src={Stats} />

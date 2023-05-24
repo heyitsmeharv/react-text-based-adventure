@@ -2,37 +2,34 @@ import React from 'react';
 import "./styles.css";
 
 // components
-import Item from '../Item/Item';
 import Hover from '../Hover/Hover';
 import StatBar from '../Character/StatBar';
+import Loot from '../Loot/Loot';
 
-const Room = ({ room, description, items, enemies, inventory, onInteract, onNavigate, onLootRoom }) => {
+// images
+import Backpack from "../../resources/images/light-backpack.png";
+
+const Room = ({ room, description, items, enemies, inventory, onInteract, onNavigate, onLootRoom, onOpenLoot, isLoot, onToggleLoot }) => {
   console.log('room', room);
   console.log('items', items);
   return (
     <div className='room-container'>
       <div className='room-scenario'>
+        {onOpenLoot && (
+          <Loot items={items} inventory={inventory} onInteract={onInteract} />
+        )}
+        {isLoot && items.length > 0 && items.every(i => i.taken === false) && (
+          <div className='loot-button-container'>
+            <button className={`loot-button ${isLoot ? 'isLoot' : ''}`} onClick={onToggleLoot}>
+              <img alt='inventory' className='inventory-icon' src={Backpack} />
+            </button>
+          </div>
+        )}
         <div className='room-description'>
           <h1 className="room-text-header">{room.name}</h1>
           <span className="room-text">{description}</span>
         </div>
-        <div className='room-items'>
-          {/* {items.length > 0 && items.every(i => i.taken === false) ? (
-            <>
-              <ul className='room-item-list'>
-                {items.filter(item => !inventory.includes(item)).map((item, index) => (
-                  <li key={index} className='room-list-item'>
-                    <button className="room-item-button" onClick={() => onInteract(item)}>
-                      <Item onClick={() => onInteract(item)} name={item.name} img={item.image} description={item.description} />
-                    </button>
-                  </li>
-                ))}
-              </ul>
-            </>
-          ) : (
-            <p className="room-text">There are no items in this room.</p>
-          )} */}
-        </div>
+
         <div className='room-enemies'>
           {enemies.length > 0 && enemies.every(i => i.killed === false) && (
             <>
