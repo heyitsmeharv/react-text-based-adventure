@@ -8,11 +8,14 @@
 }
 
 .loot-list {
+  display: flex;
   list-style-type: none;
   padding: 0px;
 }
 
-.loot-item {}
+.loot-item {
+  margin: 0 10px;
+}
 
 .loot-item-button {
   outline: none;

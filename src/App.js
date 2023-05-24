@@ -31,6 +31,7 @@ const App = () => {
   const [takeDamage, setTakeDamage] = useState(false);
   const [isLoot, setIsLoot] = useState(false);
   const [onOpenLoot, setOnOpenLoot] = useState(false);
+  const [lootedRoom, setLootedRoom] = useState(false);
 
   // used for debugging.
   const whereAmI = () => {
@@ -63,23 +64,26 @@ const App = () => {
     setCurrentRoom(map[currentRoom.id + 1]);
     setOnOpenLoot(false);
     setIsLoot(false);
+    setLootedRoom(false);
     whereAmI();
   }
 
-  // the player will have a random chance of taking damage.
+  // the player will take damage if there are no items.
+  // prevent player from spamming this more than once.
   const handleLootTheRoom = () => {
-    const unlucky = randomChance(0.2);
-    if (unlucky) {
-      const copyPlayerStats = playerStats;
-      copyPlayerStats[0].health = copyPlayerStats[0].health - 10;
-      setPlayerStats(copyPlayerStats);
-      setTakeDamage(true);
-      setTimeout(() => {
-        setTakeDamage(false);
-      }, 500);
+    if (!lootedRoom) {
+      if (map[currentRoom.id].items.length === 0) {
+        const copyPlayerStats = playerStats;
+        copyPlayerStats[0].health = copyPlayerStats[0].health - 10;
+        setPlayerStats(copyPlayerStats);
+        setTakeDamage(true);
+        setTimeout(() => {
+          setTakeDamage(false);
+        }, 500);
+      }
+      setIsLoot(true);
+      setLootedRoom(true);
     }
-    setIsLoot(true);
-    // handleNavigate();
   }
 
   // used to proceed through the next room.
@@ -207,6 +211,7 @@ const App = () => {
             onToggleLoot={onToggleLoot}
             onOpenLoot={onOpenLoot}
             isLoot={isLoot}
+            lootedRoom={lootedRoom}
           />
           <button className="toggle-button-inventory" onClick={togglePanel}>
             <img alt='inventory' className='inventory-icon' src={Stats} />

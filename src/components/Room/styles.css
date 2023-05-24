@@ -48,6 +48,16 @@
   border-bottom: 2px solid #fff;
 }
 
+.room-button.disabled {
+  cursor: not-allowed;
+  opacity: 0.2;
+  background: #333;
+}
+
+.room-button.disabled:hover {
+  border: none;
+}
+
 .room-button-item {
   background-color: #666;
   border: none;
