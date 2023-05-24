@@ -5,19 +5,20 @@ import "./styles.css";
 import Hover from '../Hover/Hover';
 import StatBar from '../Character/StatBar';
 import Loot from '../Loot/Loot';
+import Map from '../Map/Map';
 
 // images
 import Backpack from "../../resources/images/light-backpack.png";
 
-const Room = ({ room, description, items, enemies, inventory, onInteract, onNavigate, onLootRoom, onOpenLoot, isLoot, onToggleLoot, lootedRoom }) => {
+const Room = ({ map, room, description, items, enemies, inventory, onInteract, onNavigate, onLootRoom, onOpenLoot, isLoot, onToggleLoot, lootedRoom }) => {
   console.log('room', room);
   console.log('items', items);
   return (
     <div className='room-container'>
       <div className='room-scenario'>
-        {onOpenLoot && (
-          <Loot items={items} inventory={inventory} onInteract={onInteract} />
-        )}
+        <div className='room-map-container'>
+          <Map map={map} currentRoom={room} />
+        </div>
         {isLoot && items.length > 0 && items.every(i => i.taken === false) && (
           <div className='loot-button-container'>
             <button className={`loot-button ${isLoot ? 'isLoot' : ''}`} onClick={onToggleLoot}>
@@ -29,11 +30,13 @@ const Room = ({ room, description, items, enemies, inventory, onInteract, onNavi
           <h1 className="room-text-header">{room.name}</h1>
           <span className="room-text">{description}</span>
         </div>
-
-        <div className='room-enemies'>
+        {onOpenLoot && (
+          <Loot items={items} inventory={inventory} onInteract={onInteract} />
+        )}
+        <div className='room-enemy-container'>
           {enemies.length > 0 && enemies.every(i => i.killed === false) && (
             <>
-              <div className='room-enemy-container'>
+              <div className='room-enemies'>
                 {enemies.map((enemy, index) => (
                   <div key={index} className='room-enemy-wrapper'>
                     {/* <span className="room-enemy-text">{enemy.name} - {enemy.description}</span> */}
@@ -51,13 +54,13 @@ const Room = ({ room, description, items, enemies, inventory, onInteract, onNavi
         {enemies.length === 0 &&
           <button button className="room-button" onClick={onNavigate}>Look around</button>
         }
-        <button className={`room-button ${lootedRoom ? 'disabled' : ''}`} onClick={onLootRoom}>Loot the room</button>
         {enemies.length > 0 &&
           <>
-            <button className="room-button" onClick={onNavigate}>Escape</button>
             <button className="room-button" onClick={onNavigate}>Attack</button>
+            <button className="room-button" onClick={onNavigate}>Escape</button>
           </>
         }
+        <button className={`room-button ${lootedRoom ? 'disabled' : ''}`} onClick={onLootRoom}>Loot the room</button>
       </div>
     </div >
   );

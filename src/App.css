@@ -33,13 +33,12 @@
 }
 
 .map {
-  width: 0;
-  height: 100%;
-  background-color: #101010;
+  display: none;
   opacity: 0;
 }
 
 .map.active {
+  display: block;
   position: absolute;
   width: 100%;
   height: 100%;

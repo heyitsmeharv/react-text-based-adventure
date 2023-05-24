@@ -56,13 +56,11 @@
 .character-equipment-wrapper-text-bottom {
   display: flex;
   align-items: center;
-  margin-top: 5%;
 }
 
 .character-equipment-wrapper-text-top {
   display: flex;
   align-items: center;
-  margin-bottom: 2%;
 }
 
 .character-heading-text {
@@ -133,7 +131,6 @@
   border-radius: 30px;
   background-color: #FFF;
   overflow: hidden;
-  margin-left: 30px;
 }
 
 .stat-bar-fill {

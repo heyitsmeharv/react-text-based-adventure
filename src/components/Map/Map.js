@@ -12,12 +12,12 @@ const Map = ({ map, currentRoom }) => {
       {map.map((room, i) => {
         console.log('room-map', room);
         console.log('current room', currentRoom);
-        return <div key={i} className="room" style={{ border: room.name === currentRoom.name ? '6px solid #FFF' : '', boxShadow: room.name === currentRoom.name ? '0 0 10px #FFF' : '' }}>{room.explored === true ? <img alt='explored' className='map-room-icon' src={Explored} /> :
+        return <div key={i} className="room" style={{ border: room.name === currentRoom.name ? '4px solid #FFF' : '', boxShadow: room.name === currentRoom.name ? '0 0 12px 4px #FFF' : '', borderRadius: room.name === currentRoom.name ? '13px' : '' }}>{room.explored === true ? <img alt='explored' className='map-room-icon' src={Explored} /> :
           room.name === currentRoom.name ? <img alt='location' className='map-room-icon' src={Location} /> :
             <img alt='unexplored' className='map-room-icon' src={Unexplored} />}
         </div>
       })}
-    </div>
+    </div >
   );
 };
 

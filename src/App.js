@@ -8,7 +8,6 @@ import Start from "./components/Start/Start";
 import Room from "./components/Room/Room";
 import Inventory from "./components/Inventory/Inventory";
 import Character from "./components/Character/Character";
-import Map from './components/Map/Map';
 
 // images
 import Stats from "./resources/images/histogram.png";
@@ -200,6 +199,7 @@ const App = () => {
       {currentRoom && currentRoom.name !== 'Start' &&
         <div className={`main-container ${takeDamage ? 'takeDamage' : ''}`}>
           <Room
+            map={map}
             room={map[currentRoom.id]}
             description={map[currentRoom.id].description}
             items={map[currentRoom.id].items}
@@ -222,9 +222,6 @@ const App = () => {
           <div className={`panel ${panelActive ? 'active' : ''}`}>
             <Character playerName={playerName} playerStats={playerStats} equippedItems={equippedItems} flash={flash} />
             <Inventory items={playerInventory} equippedItems={equippedItems} onUse={handleUse} />
-          </div>
-          <div className={`map ${mapActive ? 'active' : ''}`}>
-            <Map map={map} currentRoom={map[currentRoom.id]} />
           </div>
         </div>
       }

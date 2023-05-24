@@ -1,9 +1,10 @@
 .loot-container {
-  height: 200px;
-  width: 410px;
+  height: 100px;
+  width: auto;
   border: 3px solid #FFF;
   border-radius: 8px;
-  margin: 0 24px 24px auto;
+  margin-top: 24px;
+  float: right;
   animation: slide-in-bottom 0.8s forwards;
 }
 
