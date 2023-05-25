@@ -9,19 +9,16 @@ import Item from "../Item/Item";
 import Strength from "../../resources/images/biceps.png";
 import Health from "../../resources/images/heart-wings.png";
 import Agility from "../../resources/images/body-balance.png";
-import AP from "../../resources/images/sword-brandish.png";
+import Shield from "../../resources/images/shield.png";
 import Empty from "../../resources/images/square.png";
 import Equipment from "../../resources/images/battle-gear.png";
 
 const Character = ({ playerName, playerStats, equippedItems, flash }) => {
-  const [{ health, strength, agility, attackPower }] = playerStats;
+  const [{ health, strength, defence, agility }] = playerStats;
   const [{ helmet, cape, shoulders, weapon, chest, gloves, boots, legs, ring }] = equippedItems;
 
   return (
     <div className='character-container'>
-      <div className='character-equipment-wrapper-text-top'>
-        <h2 className="character-heading-text">Player Stats</h2>
-      </div>
       <div className='character-icon-wrapper'>
         <div className='character-stat-row'>
           <Item name="Health" img={Health} description="" small={true} />
@@ -32,12 +29,12 @@ const Character = ({ playerName, playerStats, equippedItems, flash }) => {
           <StatBar currentStatPercentage={strength} maxPercentage={30} />
         </div>
         <div className='character-stat-row'>
-          <Item name="Agility" img={Agility} description="" small={true} />
-          <StatBar currentStatPercentage={agility} maxPercentage={20} />
+          <Item name="Defence" img={Shield} description="" small={true} />
+          <StatBar currentStatPercentage={defence} maxPercentage={30} />
         </div>
         <div className='character-stat-row'>
-          <Item name="Attack Power" img={AP} description="" small={true} />
-          <StatBar currentStatPercentage={attackPower} maxPercentage={100} />
+          <Item name="Agility" img={Agility} description="" small={true} />
+          <StatBar currentStatPercentage={agility} maxPercentage={20} />
         </div>
       </div>
       <div className="character-equipment-wrapper">

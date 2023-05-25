@@ -21,7 +21,7 @@ const App = () => {
   const [playerName, setPlayerName] = useState('');
   const [map, setMap] = useState(null);
   const [currentRoom, setCurrentRoom] = useState(null);
-  const [playerStats, setPlayerStats] = useState([{ health: 100, strength: 2, agility: 3, attackPower: 5 }]);
+  const [playerStats, setPlayerStats] = useState([{ health: 100, strength: 5, defence: 5, agility: 3 }]);
   const [playerInventory, setPlayerInventory] = useState([]);
   const [equippedItems, setEquippedItems] = useState([{ helmet: null, cape: null, shoulders: null, weapon: null, chest: null, gloves: null, boots: null, legs: null, ring: null }]);
   const [flash, setFlash] = useState({ slot: '', value: false });
@@ -29,11 +29,19 @@ const App = () => {
   const [isLoot, setIsLoot] = useState(false);
   const [onOpenLoot, setOnOpenLoot] = useState(false);
   const [lootedRoom, setLootedRoom] = useState(false);
+  const [escapeAttempt, setEscapeAttempt] = useState(false);
 
   // used for debugging.
   const whereAmI = () => {
     console.log('You Are =>', { size: map.length, room: map[currentRoom.id].id });
   };
+
+
+  // used to determine damage in combat
+  const calculateDamage = (strength, defensePower) => {
+    const damage = 2 * (strength / defensePower); // Calculate damage
+    return Math.floor(damage); // Round down the damage value
+  }
 
   // used to determine item drops and combat.
   const randomChance = probability => {
@@ -62,7 +70,30 @@ const App = () => {
     setOnOpenLoot(false);
     setIsLoot(false);
     setLootedRoom(false);
+    setEscapeAttempt(false);
     whereAmI();
+  }
+
+  // the player has a chance to evade any enemies
+  // but will be punished if unsuccessful
+  // chance to escape and dmg dependant on enemy
+  const handleEscape = () => {
+    if (!escapeAttempt) {
+      const escapeChance = map[currentRoom.id].enemies[0].stats.agility;
+      const damage = map[currentRoom.id].enemies[0].stats.strength;
+      if (playerStats[0].agility > escapeChance) {
+        handleNavigate();
+      } else {
+        const copyPlayerStats = playerStats;
+        copyPlayerStats[0].health = copyPlayerStats[0].health - damage;
+        setPlayerStats(copyPlayerStats);
+        setTakeDamage(true);
+        setTimeout(() => {
+          setTakeDamage(false);
+        }, 500);
+      }
+      setEscapeAttempt(true);
+    }
   }
 
   // the player will take damage if there are no items.
@@ -176,6 +207,59 @@ const App = () => {
     }
   };
 
+  // handle combat
+  const handleAttack = () => {
+    const escapeChance = map[currentRoom.id].enemies.reduce((accumulator, currentValue) => {
+      return currentValue.stats.agility + accumulator;
+    }, 0);
+    const enemyDamage = map[currentRoom.id].enemies.reduce((accumulator, currentValue) => {
+      return currentValue.stats.strength + accumulator;
+    }, 0);
+    const enemyDefence = map[currentRoom.id].enemies.reduce((accumulator, currentValue) => {
+      return currentValue.stats.strength + accumulator;
+    }, 0);
+    console.log(escapeChance);
+    let isPlayerTurn = playerStats[0].agility > escapeChance;
+    if (isPlayerTurn) {
+      let damage = calculateDamage(playerStats[0].strength, enemyDefence);
+      const copyEnemyStats = map[currentRoom.id].enemies[0].stats;
+      copyEnemyStats[0].health = copyEnemyStats[0].health - damage;
+
+      damage = calculateDamage(enemyDamage, playerStats[0].defence);
+      const copyPlayerStats = playerStats;
+      copyPlayerStats[0].health = copyPlayerStats[0].health - damage;
+      setPlayerStats(copyPlayerStats);
+      setTakeDamage(true);
+      setTimeout(() => {
+        setTakeDamage(false);
+      }, 500);
+
+    } else {
+      let damage = calculateDamage(enemyDamage, playerStats[0].defence);
+      const copyPlayerStats = playerStats;
+      copyPlayerStats[0].health = copyPlayerStats[0].health - damage;
+      setPlayerStats(copyPlayerStats);
+      setTakeDamage(true);
+      setTimeout(() => {
+        setTakeDamage(false);
+      }, 500);
+
+      damage = calculateDamage(playerStats[0].strength, enemyDefence);
+
+      map[currentRoom.id].enemies.forEach((enemy, i) => {
+        console.log(currentRoom);
+        const copyCurrentRoom = currentRoom;
+        const hp = enemy.stats.health - damage;
+        copyCurrentRoom.enemies[i].stats.health = hp;
+        setCurrentRoom(copyCurrentRoom);
+        console.log(currentRoom);
+        // copyEnemyStats.health = copyEnemyStats.health - damage;
+        // setCurrentRoom(...currentRoom, map[currentRoom.id].enemies[i].health = copyEnemyStats.health - damage);
+      });
+      console.log('map', map);
+    }
+  };
+
   const onToggleLoot = () => {
     setOnOpenLoot(!onOpenLoot);
   }
@@ -201,11 +285,14 @@ const App = () => {
             inventory={playerInventory}
             onInteract={handleInteract}
             onNavigate={handleNavigate}
+            onEscape={handleEscape}
             onLootRoom={handleLootTheRoom}
+            onAttack={handleAttack}
             onToggleLoot={onToggleLoot}
             onOpenLoot={onOpenLoot}
             isLoot={isLoot}
             lootedRoom={lootedRoom}
+            escapeAttempt={escapeAttempt}
           />
           <button className="toggle-button-inventory" onClick={togglePanel}>
             <img alt='inventory' className='inventory-icon' src={Stats} />
@@ -217,7 +304,7 @@ const App = () => {
         </div>
       }
       {currentRoom && currentRoom.name === 'End' ?
-        <h2>End</h2>
+        ''
         : null
       }
     </>

@@ -10,7 +10,7 @@ import Map from '../Map/Map';
 // images
 import Backpack from "../../resources/images/light-backpack.png";
 
-const Room = ({ map, room, description, items, enemies, inventory, onInteract, onNavigate, onLootRoom, onOpenLoot, isLoot, onToggleLoot, lootedRoom }) => {
+const Room = ({ map, room, description, items, enemies, inventory, onInteract, onNavigate, onEscape, onAttack, onLootRoom, onOpenLoot, isLoot, onToggleLoot, lootedRoom, escapeAttempt }) => {
   console.log('room', room);
   console.log('items', items);
   return (
@@ -39,10 +39,8 @@ const Room = ({ map, room, description, items, enemies, inventory, onInteract, o
               <div className='room-enemies'>
                 {enemies.map((enemy, index) => (
                   <div key={index} className='room-enemy-wrapper'>
-                    {/* <span className="room-enemy-text">{enemy.name} - {enemy.description}</span> */}
-                    <StatBar currentStatPercentage={enemy.stats.health} maxPercentage={enemy.stats.health} />
+                    <StatBar currentStatPercentage={enemy.stats.health} maxPercentage={enemy.stats.maxHealth} />
                     <Hover header={enemy.name} description={enemy.description} img={enemy.image} size="large" />
-                    {/* <img className='room-enemy-image' alt={enemy.name} src={enemy.image} /> */}
                   </div>
                 ))}
               </div>
@@ -56,8 +54,8 @@ const Room = ({ map, room, description, items, enemies, inventory, onInteract, o
         }
         {enemies.length > 0 &&
           <>
-            <button className="room-button" onClick={onNavigate}>Attack</button>
-            <button className="room-button" onClick={onNavigate}>Escape</button>
+            <button className="room-button" onClick={onAttack}>Attack</button>
+            <button className={`room-button ${escapeAttempt ? 'disabled' : ''}`} onClick={onEscape}>Escape</button>
           </>
         }
         <button className={`room-button ${lootedRoom ? 'disabled' : ''}`} onClick={onLootRoom}>Loot the room</button>

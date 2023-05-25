@@ -11,49 +11,51 @@ export const Enemies = [
   {
     name: `Guards`,
     description: `His name is Micheal and he has two kids`,
-    stats: { health: 20, strength: 2, agility: 2, attackPower: 1 },
+    stats: { maxHealth: 20, health: 20, strength: 10, agility: 6, defence: 15 },
     killed: false,
     image: Guards
   },
   {
     name: `Executioner`,
     description: `His face is covered with a black hood and he's wielding an axe`,
-    stats: { health: 20, strength: 2, agility: 2, attackPower: 1 },
+    stats: { maxHealth: 40, health: 40, strength: 15, agility: 8, defence: 20 },
     killed: false,
     image: Executioner
   },
   {
     name: `Rat`,
     description: `Smelly vermin but can bite when cornered`,
-    stats: { health: 20, strength: 2, agility: 2, attackPower: 1 },
+    stats: { maxHealth: 5, health: 5, strength: 5, agility: 4, defence: 5 },
     killed: false,
     image: Rat
   },
   {
     name: `Prisoner`,
     description: `Will betray you when the opportunity presents itself`,
-    stats: { health: 20, strength: 2, agility: 2, attackPower: 1 },
+    stats: { maxHealth: 10, health: 10, strength: 8, agility: 5, defence: 10 },
     killed: false,
     image: Prisoner
   },
   {
     name: `Queen`,
     description: `Has as much bling as 2 chainz`,
-    stats: { health: 200, strength: 20, agility: 50, attackPower: 10 },
+    stats: { maxHealth: 50, health: 50, strength: 20, agility: 10, defence: 20 },
     killed: false,
     image: Queen
   },
   {
     name: `Skeleton`,
     description: `Has as much bling as 2 chainz`,
-    stats: { health: 200, strength: 20, agility: 50, attackPower: 10 },
+    stats: { maxHealth: 10, health: 10, strength: 10, agility: 4, defence: 15 },
     killed: false,
     image: Skeleton
   },
   {
     name: `Ghost`,
     description: `Spooky Ghost`,
-    stats: { health: 200, strength: 20, agility: 50, attackPower: 10 },
+    stats: {
+      maxHealth: 20, health: 20, strength: 12, agility: 7, defence: 20
+    },
     killed: false,
     image: Ghost
   },

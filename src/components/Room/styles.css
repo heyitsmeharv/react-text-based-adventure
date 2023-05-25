@@ -7,6 +7,7 @@
 */
 
 .room-container {
+  animation: slide-in-right 0.8s forwards;
   color: #FFF;
   margin: auto;
   min-width: 65%;
@@ -215,7 +216,7 @@
   .room-container {
     color: #FFF;
     margin: auto;
-    max-width: 25%;
+    max-width: 70%;
   }
 }
 
