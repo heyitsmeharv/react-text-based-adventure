@@ -3,6 +3,7 @@ import "./App.css";
 
 // pages
 import Start from "./components/Start/Start";
+import GameOver from "./components/GameOver/GameOver";
 
 // components
 import Room from "./components/Room/Room";
@@ -30,6 +31,7 @@ const App = () => {
   const [onOpenLoot, setOnOpenLoot] = useState(false);
   const [lootedRoom, setLootedRoom] = useState(false);
   const [escapeAttempt, setEscapeAttempt] = useState(false);
+  const [dead, setDead] = useState(false);
 
   // used for debugging.
   const whereAmI = () => {
@@ -62,6 +64,10 @@ const App = () => {
       setPlayerName(inputRef.current.value)
     }
     handleNavigate();
+  }
+
+  const handleRestartGame = () => {
+    // todo
   }
 
   const handleNavigate = () => {
@@ -253,11 +259,22 @@ const App = () => {
         copyCurrentRoom.enemies[i].stats.health = hp;
         setCurrentRoom(copyCurrentRoom);
         console.log(currentRoom);
-        // copyEnemyStats.health = copyEnemyStats.health - damage;
-        // setCurrentRoom(...currentRoom, map[currentRoom.id].enemies[i].health = copyEnemyStats.health - damage);
       });
       console.log('map', map);
     }
+
+    // check to see if the play has beaten the enemy
+    const allEnemiesDead = map[currentRoom.id].enemies.every(enemy => enemy.stats.health <= 0);
+
+    if (allEnemiesDead) {
+      handleNavigate();
+    }
+
+    // did the player die??
+    if (playerStats[0].health <= 0) {
+      setDead(true);
+    }
+
   };
 
   const onToggleLoot = () => {
@@ -270,11 +287,11 @@ const App = () => {
 
   return (
     <>
-      {currentRoom && currentRoom.name === 'Start' ?
+      {!dead && currentRoom && currentRoom.name === 'Start' ?
         <Start inputRef={inputRef} handleStartGame={handleStartGame} />
         : null
       }
-      {currentRoom && currentRoom.name !== 'Start' &&
+      {!dead && currentRoom && currentRoom.name !== 'Start' &&
         <div className={`main-container ${takeDamage ? 'takeDamage' : ''}`}>
           <Room
             map={map}
@@ -303,9 +320,12 @@ const App = () => {
           </div>
         </div>
       }
-      {currentRoom && currentRoom.name === 'End' ?
+      {!dead && currentRoom && currentRoom.name === 'End' ?
         ''
         : null
+      }
+      {dead &&
+        <GameOver handleRestartGame={handleRestartGame} />
       }
     </>
   );
