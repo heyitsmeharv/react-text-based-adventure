@@ -55,7 +55,7 @@ const App = () => {
     const gen = generateRooms(randomChance);
     setMap(gen);
     setCurrentRoom(gen[0]);
-  }, []);
+  }, [dead]);
 
   const handleStartGame = () => {
     if (!inputRef.current.value) {
@@ -67,7 +67,12 @@ const App = () => {
   }
 
   const handleRestartGame = () => {
-    // todo
+    setMap(null);
+    setCurrentRoom(null);
+    setPlayerStats([{ health: 100, strength: 5, defence: 5, agility: 3 }]);
+    setPlayerInventory([]);
+    setEquippedItems([{ helmet: null, cape: null, shoulders: null, weapon: null, chest: null, gloves: null, boots: null, legs: null, ring: null }]);
+    setDead(false);
   }
 
   const handleNavigate = () => {
