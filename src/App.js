@@ -38,7 +38,6 @@ const App = () => {
     console.log('You Are =>', { size: map.length, room: map[currentRoom.id].id });
   };
 
-
   // used to determine damage in combat
   const calculateDamage = (strength, defensePower) => {
     const damage = 2 * (strength / defensePower); // Calculate damage
@@ -127,8 +126,12 @@ const App = () => {
 
   // used to proceed through the next room.
   const handleInteract = item => {
-    map[currentRoom.id].items.taken = true;
+    const itemPickedUp = map[currentRoom.id].items.findIndex(i => i.image === item.image);
+    map[currentRoom.id].items[itemPickedUp].taken = true;
     setPlayerInventory([...playerInventory, item]);
+    if (map[currentRoom.id].items.every(i => i.taken === true)) {
+      setOnOpenLoot(false);
+    }
   };
 
   // used for when the player interacts with the item.

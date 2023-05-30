@@ -212,7 +212,7 @@
   }
 }
 
-@media only screen and (max-width: 1000px) {
+@media only screen and (min-width: 1000px) {
   .room-container {
     color: #FFF;
     margin: auto;
@@ -220,7 +220,7 @@
   }
 }
 
-@media only screen and (min-width: 700px) and (max-width: 1400px) {
+@media only screen and (min-width: 700px) and (max-width: 1000px) {
   .room-container {
     color: #FFF;
     margin: auto;

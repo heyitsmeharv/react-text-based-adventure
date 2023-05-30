@@ -11,8 +11,6 @@ import Map from '../Map/Map';
 import Backpack from "../../resources/images/light-backpack.png";
 
 const Room = ({ map, room, description, items, enemies, inventory, onInteract, onNavigate, onEscape, onAttack, onLootRoom, onOpenLoot, isLoot, onToggleLoot, lootedRoom, escapeAttempt }) => {
-  console.log('room', room);
-  console.log('items', items);
   return (
     <div className='room-container'>
       <div className='room-scenario'>
