@@ -5,7 +5,6 @@ import "./styles.css";
 import Item from "../Item/Item";
 
 const Loot = ({ items, inventory, onInteract }) => {
-  console.log(items)
   return (
     <div className='loot-container'>
       <ul className='loot-list'>

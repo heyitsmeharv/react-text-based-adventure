@@ -15,9 +15,19 @@ export const generateRooms = randomChance => {
       explored: false
     }
   ];
+
   const listOfPotentialRooms = Rooms;
   const items = Items;
   const enemies = Enemies;
+
+  // probably re-work the flags () at some point
+  // for now let's map through and reset them
+  listOfPotentialRooms.forEach(room => room.explored = false);
+  items.forEach(item => item.taken = false);
+  enemies.forEach(enemy => {
+    enemy.killed = false
+    enemy.stats.health = enemy.stats.maxHealth;
+  });
 
   // let's loop through all of the rooms available
   for (let i = 0; i < listOfPotentialRooms.length; i++) {
@@ -128,7 +138,5 @@ export const generateRooms = randomChance => {
   }
 
   rooms.push(end);
-
-  console.log(rooms);
   return rooms;
 };

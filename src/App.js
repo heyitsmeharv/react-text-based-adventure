@@ -40,7 +40,7 @@ const App = () => {
 
   // used to determine damage in combat
   const calculateDamage = (strength, defensePower) => {
-    const damage = 2 * (strength / defensePower); // Calculate damage
+    const damage = 4 * (strength / defensePower); // Calculate damage
     return Math.floor(damage); // Round down the damage value
   }
 
@@ -54,7 +54,7 @@ const App = () => {
     const gen = generateRooms(randomChance);
     setMap(gen);
     setCurrentRoom(gen[0]);
-  }, [dead]);
+  }, []);
 
   const handleStartGame = () => {
     if (!inputRef.current.value) {
@@ -72,6 +72,11 @@ const App = () => {
     setPlayerInventory([]);
     setEquippedItems([{ helmet: null, cape: null, shoulders: null, weapon: null, chest: null, gloves: null, boots: null, legs: null, ring: null }]);
     setDead(false);
+
+    // setup
+    const gen = generateRooms(randomChance);
+    setMap(gen);
+    setCurrentRoom(gen[0]);
   }
 
   const handleNavigate = () => {
@@ -136,7 +141,6 @@ const App = () => {
 
   // used for when the player interacts with the item.
   const handleUse = item => {
-    console.log('used item', item);
     // check if item isn't already equipped
     const isEquipped = equippedItems.some(i => i[item.slot]?.image === item.image);
 
@@ -184,8 +188,6 @@ const App = () => {
       }
 
       setEquippedItems([...equippedItems], equippedItemsCopy);
-      console.log('playerStats', playerStats);
-
       if (swappedOutItem) {
         // remove stats from previous equipped item
         let prevItem;
@@ -213,7 +215,6 @@ const App = () => {
         setPlayerStats([...playerStats], playerStatsCopy)
       }
     } else {
-      console.log(`you already have that item equipped`);
       setFlash({ slot: item.slot, value: true });
       setTimeout(() => {
         setFlash({ slot: '', value: false });
@@ -232,7 +233,6 @@ const App = () => {
     const enemyDefence = map[currentRoom.id].enemies.reduce((accumulator, currentValue) => {
       return currentValue.stats.strength + accumulator;
     }, 0);
-    console.log(escapeChance);
     let isPlayerTurn = playerStats[0].agility > escapeChance;
     if (isPlayerTurn) {
       let damage = calculateDamage(playerStats[0].strength, enemyDefence);
@@ -261,14 +261,11 @@ const App = () => {
       damage = calculateDamage(playerStats[0].strength, enemyDefence);
 
       map[currentRoom.id].enemies.forEach((enemy, i) => {
-        console.log(currentRoom);
         const copyCurrentRoom = currentRoom;
         const hp = enemy.stats.health - damage;
         copyCurrentRoom.enemies[i].stats.health = hp;
         setCurrentRoom(copyCurrentRoom);
-        console.log(currentRoom);
       });
-      console.log('map', map);
     }
 
     // check to see if the play has beaten the enemy
