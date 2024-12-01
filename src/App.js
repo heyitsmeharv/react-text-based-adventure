@@ -15,6 +15,7 @@ import Stats from "./resources/images/histogram.png";
 
 // helpers
 import { generateRooms } from "./helpers/setup";
+import Intro from "./components/Intro/Intro";
 
 const App = () => {
   const inputRef = useRef();
@@ -324,6 +325,10 @@ const App = () => {
             <Inventory items={playerInventory} equippedItems={equippedItems} onUse={handleUse} />
           </div>
         </div>
+      }
+
+      {!dead && currentRoom && currentRoom.name !== 'Start' &&
+        <Intro playerName={playerName} />
       }
       {!dead && currentRoom && currentRoom.name === 'End' ?
         ''
