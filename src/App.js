@@ -6,6 +6,7 @@ import Start from "./components/Start/Start";
 import GameOver from "./components/GameOver/GameOver";
 
 // components
+import Game from "./components/Game/Game";
 import Room from "./components/Room/Room";
 import Inventory from "./components/Inventory/Inventory";
 import Character from "./components/Character/Character";
@@ -39,8 +40,8 @@ const App = () => {
   };
 
   // used to determine damage in combat
-  const calculateDamage = (strength, defensePower) => {
-    const damage = 4 * (strength / defensePower); // Calculate damage
+  const calculateDamage = (strength, defencePower) => {
+    const damage = 4 * (strength / defencePower); // Calculate damage
     return Math.floor(damage); // Round down the damage value
   }
 
@@ -298,7 +299,8 @@ const App = () => {
       }
       {!dead && currentRoom && currentRoom.name !== 'Start' &&
         <div className={`main-container ${takeDamage ? 'takeDamage' : ''}`}>
-          <Room
+          <Game />
+          {/* <Room
             map={map}
             room={map[currentRoom.id]}
             description={map[currentRoom.id].description}
@@ -315,7 +317,7 @@ const App = () => {
             isLoot={isLoot}
             lootedRoom={lootedRoom}
             escapeAttempt={escapeAttempt}
-          />
+          /> */}
           <button className="toggle-button-inventory" onClick={togglePanel}>
             <img alt='inventory' className='inventory-icon' src={Stats} />
           </button>

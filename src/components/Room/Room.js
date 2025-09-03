@@ -6,6 +6,7 @@ import Hover from '../Hover/Hover';
 import StatBar from '../Character/StatBar';
 import Loot from '../Loot/Loot';
 import Map from '../Map/Map';
+import TypewriterEffect from '../TypeWriterEffect/TypeWriterEffect';
 
 // images
 import Backpack from "../../resources/images/light-backpack.png";
@@ -25,8 +26,8 @@ const Room = ({ map, room, description, items, enemies, inventory, onInteract, o
           </div>
         )}
         <div className='room-description'>
-          <h1 className="room-text-header">{room.name}</h1>
-          <span className="room-text">{description}</span>
+          <h1 className="room-text-header"><TypewriterEffect text={room.name} speed={50}></TypewriterEffect></h1>
+          <TypewriterEffect text={description} speed={20}></TypewriterEffect>
         </div>
         {onOpenLoot && (
           <Loot items={items} inventory={inventory} onInteract={onInteract} />
@@ -48,7 +49,7 @@ const Room = ({ map, room, description, items, enemies, inventory, onInteract, o
       </div>
       <div className='room-options'>
         {enemies.length === 0 &&
-          <button button className="room-button" onClick={onNavigate}>Look around</button>
+          <button className="room-button" onClick={onNavigate}>Look around</button>
         }
         {enemies.length > 0 &&
           <>
@@ -58,7 +59,7 @@ const Room = ({ map, room, description, items, enemies, inventory, onInteract, o
         }
         <button className={`room-button ${lootedRoom ? 'disabled' : ''}`} onClick={onLootRoom}>Loot the room</button>
       </div>
-    </div >
+    </div>
   );
 };
 

@@ -1,0 +1,13 @@
+.scroll-container {
+  max-height: 200px; /* Limit the height to create a scrollable area */
+  overflow-y: scroll; /* Enable vertical scrolling */
+  padding: 10px;
+  font-family: Arial, sans-serif;
+  white-space: pre-line; /* Preserve line breaks in the text */
+  position: relative;
+}
+
+.scroll-container p {
+  margin: 0;
+  animation: scrollText 10s linear infinite; /* Adjust timing for continuous scrolling */
+}
