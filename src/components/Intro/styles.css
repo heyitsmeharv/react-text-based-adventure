@@ -1,0 +1,24 @@
+@keyframes scrollText {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.container {
+  background: black;
+}
+
+.scrolling-container {
+  background: black;
+}
+
+.scrolling-text {
+  white-space: nowrap;
+  overflow: hidden;
+  position: absolute;
+  top: 100%; /* Adjust as needed */
+  animation: scrollText 5s linear infinite;
+}
